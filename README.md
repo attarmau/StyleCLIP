@@ -31,3 +31,9 @@ Visit your app at: http://localhost:8000/docs
 View MongoDB UI: http://localhost:8081 (use user: root, password: example)
 
 mongo-seed runs only once at startup to populate your tags collection.
+
+📌 Sample Components for UI
+
+1. Image upload
+2. Submit button
+3. Display clothing tags + recommendations
