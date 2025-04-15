@@ -16,7 +16,7 @@ MONGO_URL = "mongodb://root:example@mongo:27017"
 
 Once it's running, open the browser and go to 👉 http://localhost:8081
 
-Login with: Username: root / Password: example
+Login with: Username: root / Password: example (temporarily setting)
 
 Step 2: 
 docker-compose up --build
