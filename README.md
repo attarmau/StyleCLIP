@@ -47,7 +47,7 @@ Update mongo service to add the same credentials:
       - mongo-data:/data/db
 ```
 
-Note: Since using environment variables in your FastAPI app, the Mongo URL should look like this:
+Note: Since using environment variables in the FastAPI app, the Mongo URL should look like this:
 MONGO_URL = "mongodb://root:example@mongo:27017"
 
 Once it's running, open the browser and go to 👉 http://localhost:8081
