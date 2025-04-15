@@ -6,8 +6,10 @@ This is a CLIP-Based Fashion Recommender with MCP. Here is the folder structure 
 │
 ├── /backend
 │   ├── Dockerfile                # Backend Dockerfile
-│   ├── main.py                   # FastAPI app code
-│   ├── requirements.txt          # Python dependencies for the backend
+│   ├── /app
+│   │   ├── main.py               # FastAPI app code
+│   │   ├── requirements.txt      # Python dependencies for the backend
+│   │   └── ...
 │   └── .env                      # Environment variables (make sure to add this to .gitignore)
 │
 ├── /frontend
@@ -15,20 +17,18 @@ This is a CLIP-Based Fashion Recommender with MCP. Here is the folder structure 
 │   ├── package.json              # Node.js dependencies (for React)
 │   ├── package-lock.json         # Lock file for React dependencies
 │   ├── /public
-│   │   ├── index.html            # HTML file for the frontend (React app is mounted here)
-│   │   └── ...
+│   │   └── index.html            # HTML file for the frontend (React app is mounted here)
 │   ├── /src
 │   │   ├── App.js                # Main React component
-│   │   ├── index.js              # React entry point
-│   │   └── ...
+│   │   └── index.js              # React entry point
 │   ├── tailwind.config.js        # Tailwind CSS config
 │   ├── postcss.config.js         # PostCSS config
-│   ├── .env                      # Frontend environment variables (add to .gitignore)
-│   └── ...
+│   └── .env                      # Frontend environment variables (add to .gitignore)
 │
 ├── .gitignore                    # Git ignore file (include .env, node_modules, etc.)
 ├── docker-compose.yml            # Docker Compose configuration
-└── README.md                     # Project documentation 
+└── README.md                     # Project documentation
+
 
 ```
 
