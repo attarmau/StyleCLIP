@@ -24,6 +24,7 @@ class PyObjectId(ObjectId):
 # MongoDB Schemas
 # ===================
 
+# ClothingItemModel represents what you store in MongoDB
 class ClothingItemModel(BaseModel):
     id: Optional[PyObjectId] = Field(alias="_id")
     filename: str
@@ -41,9 +42,11 @@ class ClothingItemModel(BaseModel):
 # Request / Response Models
 # ===================
 
+# TagRequest / UploadClothingItemRequest are what users send in
 class TagRequest(BaseModel):
     image_base64: str  # image encoded as base64 string
 
+# TagResponse / UploadClothingItemResponse are what the API sends back
 class TagResponse(BaseModel):
     tags: List[str]
 
