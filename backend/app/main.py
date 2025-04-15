@@ -6,6 +6,7 @@ from app.models.clip_classifier import classify_image_style
 from app.recommender import generate_recommendations
 from app.user_data import get_user_behavior
 from router import router
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 app.include_router(router)
@@ -23,3 +24,11 @@ def get_style_recommendations(style: str, user_id: str):
 
 if __name__ == "__main__":
     mcp.run(transport="sse")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # or ["http://localhost:5173"] for Vite
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
