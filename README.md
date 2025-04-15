@@ -23,6 +23,11 @@ Login with: Username: root / Password: example (temporarily setting)
 Step 2: 
 docker-compose up --build
 
+This will:
+
+- Start FastAPI backend with hot reload
+- Start MongoDB
+- Start Mongo Express (for DB UI) (Frontend will not be built automatically in this mode)
 
 📌 Quick Tips
 
