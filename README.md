@@ -1,5 +1,15 @@
 # MCP_RecSys
 
+project-root/
+├── app/
+├── mongo-seed/
+│   ├── Dockerfile
+│   └── tags.json
+├── docker-compose.yml
+├── Dockerfile
+├── requirements.txt
+
+
 Step 1: Update mongo service to add the same credentials:
   mongo:
     image: mongo:latest
@@ -20,4 +30,3 @@ Login with: Username: root / Password: example (temporarily setting)
 
 Step 2: 
 docker-compose up --build
-
