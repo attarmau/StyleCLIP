@@ -32,7 +32,10 @@ This is a CLIP-Based Fashion Recommender with MCP. Here is the folder structure 
 
 ```
 
-## Step 1: Update mongo service to add the same credentials:
+## Step 1
+
+Update mongo service to add the same credentials:
+```
   mongo:
     image: mongo:latest
     ports:
@@ -42,6 +45,7 @@ This is a CLIP-Based Fashion Recommender with MCP. Here is the folder structure 
       MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
       - mongo-data:/data/db
+```
 
 Note: Since using environment variables in your FastAPI app, the Mongo URL should look like this:
 MONGO_URL = "mongodb://root:example@mongo:27017"
