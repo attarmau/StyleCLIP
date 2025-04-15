@@ -32,7 +32,7 @@ This is a CLIP-Based Fashion Recommender with MCP. Here is the folder structure 
 
 ```
 
-Step 1: Update mongo service to add the same credentials:
+## Step 1: Update mongo service to add the same credentials:
   mongo:
     image: mongo:latest
     ports:
@@ -50,7 +50,7 @@ Once it's running, open the browser and go to 👉 http://localhost:8081
 
 Login with: Username: root / Password: example (temporarily setting)
 
-Step 2: 
+## Step 2: 
 docker-compose up --build
 
 This will:
@@ -63,7 +63,7 @@ Step 3:
 - Access the frontend (React app) at:  http://localhost:3000
 - Access the backend (FastAPI app) at:  http://localhost:8000
 
-📌 Quick Tips
+##📌 Quick Tips
 
 Visit your app at: http://localhost:8000/docs
 
@@ -71,7 +71,7 @@ View MongoDB UI: http://localhost:8081 (use user: root, password: example)
 
 mongo-seed runs only once at startup to populate your tags collection.
 
-📌 Sample Components for UI
+##📌 Sample Components for UI
 
 1. Image upload
 2. Submit button
