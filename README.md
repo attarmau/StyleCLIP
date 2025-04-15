@@ -8,8 +8,7 @@ This is a CLIP-Based Fashion Recommender with MCP. Here is the folder structure 
 │   ├── Dockerfile                # Backend Dockerfile
 │   ├── /app
 │   │   ├── main.py               # FastAPI app code
-│   │   ├── requirements.txt      # Python dependencies for the backend
-│   │   └── ...
+│   │   └── requirements.txt      # Python dependencies for the backend
 │   └── .env                      # Environment variables (make sure to add this to .gitignore)
 │
 ├── /frontend
