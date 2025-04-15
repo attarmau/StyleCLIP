@@ -1,6 +1,5 @@
 # MCP_RecSys
-
-
+This is a CLIP-Based Fashion Recommender with MCP
 
 Step 1: Update mongo service to add the same credentials:
   mongo:
