@@ -1,11 +1,9 @@
-# Use Node base image
-FROM node:18
-
+FROM node:16-alpine
 WORKDIR /app
-
-COPY package*.json ./
+COPY package.json package-lock.json ./
 RUN npm install
-
 COPY . .
-
-CMD ["npm", "run", "dev"]
+RUN npm run build
+RUN npm install -g serve
+EXPOSE 3000
+CMD ["serve", "-s", "build", "-l", "3000"]
