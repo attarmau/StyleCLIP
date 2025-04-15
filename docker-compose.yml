@@ -1,57 +1,40 @@
 version: '3.8'
 
 services:
-  app:
-    build: .
-    container_name: fashion-recommendation-app
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-    volumes:
-      - .:/code
+  backend:
+    build:
+      context: ./backend   # Path to the backend directory
+      dockerfile: Dockerfile  # The backend Dockerfile
     ports:
-      - "8000:8000"
+      - "8000:8000"         # Expose the backend on port 8000
+    networks:
+      - app-network
     depends_on:
-      - mongo
+      - mongodb             # Make sure MongoDB is up before backend starts
 
-  mongo:
+  frontend:
+    build:
+      context: ./frontend  # Path to the frontend directory
+      dockerfile: Dockerfile  # The frontend Dockerfile
+    ports:
+      - "3000:3000"         # Expose the frontend on port 3000
+    networks:
+      - app-network
+
+  mongodb:
     image: mongo:latest
-    container_name: mongo
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-      MONGO_INITDB_DATABASE: fashion_db
-    ports:
-      - "27017:27017"
+    container_name: mongodb
     volumes:
-      - mongo_data:/data/db
-
-  mongo-express:
-    image: mongo-express
-    container_name: mongo-express
-    restart: always
+      - mongo-data:/data/db
     ports:
-      - "8081:8081"
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      ME_CONFIG_MONGODB_SERVER: mongo
+      - "27017:27017"       # MongoDB default port
+    networks:
+      - app-network
 
-  mongo-seed:
-    build: ./mongo-seed
-    depends_on:
-      - mongo
-    restart: "no"
+networks:
+  app-network:
+    driver: bridge
 
 volumes:
-  mongo_data:
-
-frontend:
-    build:
-      context: ./frontend
-    container_name: fashion-frontend
-    ports:
-      - "3000:3000"
-    depends_on:
-      - app
-    stdin_open: true
-    tty: true
+  mongo-data:
+    driver: local
