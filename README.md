@@ -63,7 +63,7 @@ This will:
 - Start MongoDB
 - Start Mongo Express (for DB UI) (Frontend will not be built automatically in this mode)
 
-Step 3:
+## Step 3:
 - Access the frontend (React app) at:  http://localhost:3000
 - Access the backend (FastAPI app) at:  http://localhost:8000
 
