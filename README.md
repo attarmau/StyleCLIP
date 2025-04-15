@@ -67,7 +67,7 @@ This will:
 - Access the frontend (React app) at:  http://localhost:3000
 - Access the backend (FastAPI app) at:  http://localhost:8000
 
-##📌 Quick Tips
+### 📌 Quick Tips
 
 Visit your app at: http://localhost:8000/docs
 
@@ -75,7 +75,7 @@ View MongoDB UI: http://localhost:8081 (use user: root, password: example)
 
 mongo-seed runs only once at startup to populate your tags collection.
 
-##📌 Sample Components for UI
+### 📌 Sample Components for UI
 
 1. Image upload
 2. Submit button
