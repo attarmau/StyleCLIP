@@ -44,3 +44,14 @@ services:
 
 volumes:
   mongo_data:
+
+frontend:
+    build:
+      context: ./frontend
+    container_name: fashion-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - app
+    stdin_open: true
+    tty: true
