@@ -1,4 +1,4 @@
-# MCP_RecSys
+# FastMCP_RecSys
 This is a CLIP-Based Fashion Recommender with MCP. Here is the folder structure of the project:
 
 ```
