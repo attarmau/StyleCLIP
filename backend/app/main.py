@@ -5,8 +5,10 @@ from typing import List
 from app.models.clip_classifier import classify_image_style
 from app.recommender import generate_recommendations
 from app.user_data import get_user_behavior
+from router import router
 
 app = FastAPI()
+app.include_router(router)
 mcp = MCPServer(app)
 
 @mcp.tool()
