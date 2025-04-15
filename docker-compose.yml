@@ -1,33 +1,46 @@
 version: '3.8'
 
 services:
-  backend:
+  app:
     build: .
+    container_name: fashion-recommendation-app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - .:/code
     ports:
       - "8000:8000"
     depends_on:
       - mongo
-    volumes:
-      - .:/app
 
   mongo:
     image: mongo:latest
+    container_name: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: fashion_db
     ports:
       - "27017:27017"
     volumes:
-      - mongo-data:/data/db
+      - mongo_data:/data/db
 
   mongo-express:
-    image: mongo-express:latest
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
     ports:
       - "8081:8081"
     environment:
-      ME_CONFIG_MONGODB_SERVER: mongo
-      ME_CONFIG_MONGODB_PORT: 27017
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_SERVER: mongo
+
+  mongo-seed:
+    build: ./mongo-seed
     depends_on:
       - mongo
+    restart: "no"
 
 volumes:
-  mongo-data:
+  mongo_data:
