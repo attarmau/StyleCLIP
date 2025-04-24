@@ -52,8 +52,8 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 
 ```
 
-Quick Start Guide
-## Step 1: Clone the GitHub Project
+## Quick Start Guide
+### Step 1: Clone the GitHub Project
 ## Step 2: Set Up the Python Environment
 ```
 python -m venv venv
