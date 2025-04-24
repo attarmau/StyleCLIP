@@ -19,6 +19,11 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 │   │   │   └── tag_extractor.py  # for processing the tags and interacting with the CLIPModel
 │   │   ├── schemas/
 │   │   │   └── clothing_schemas.py
+│   │   ├── config/
+│   │   │   └── tag_list_en.py
+│   │   │   └── database.py (pending for DB configurations
+│   │   │   └── settings.py (pending for environment variables or application-wide settings)
+│   │   │   └── api_keys.py (pending for API keys or other sensitive data)
 │   │   └── requirements.txt      # Python dependencies for the backend
 │   └── .env                      # Environment variables (make sure to add this to .gitignore)
 │
