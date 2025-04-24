@@ -9,14 +9,35 @@ from backend.app.schemas.clothing_schemas import (
     TagResponse
 )
 from backend.app.models.clip_model import CLIPModel
-from backend.app.config.tag_list_en import GARMENT_TYPES  # Import the tag categories
+from backend.app.config.tag_list_en import GARMENT_TYPES
 
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 clip_model = CLIPModel()  # Initialize the CLIP model
 
+def determine_garment_type(embedding):
+    garment_types = list(GARMENT_TYPES.keys())
+    similarities = {
+        gt: clip_model.get_similarity(embedding, gt) for gt in garment_types
+    }
+    return max(similarities, key=similarities.get)
+
+def extract_features(embedding, garment_type):
+    if garment_type not in GARMENT_TYPES:
+        return {"error": "Unknown garment type"}
+
+    def best_match(options):
+        similarities = {
+            label: clip_model.get_similarity(embedding, label) for label in options
+        }
+        return max(similarities, key=similarities.get)
+
+    tags_config = GARMENT_TYPES[garment_type]
+    return {
+        feature: best_match(options) for feature, options in tags_config.items()
+    }
+
 async def handle_upload_clothing_item(payload: UploadClothingItemRequest) -> UploadClothingItemResponse:
-    # Decode base64 image and save to disk
     image_data = base64.b64decode(payload.image_base64)
     filename = payload.filename or f"{uuid.uuid4().hex}.jpg"
     image_path = os.path.join(UPLOAD_DIR, filename)
@@ -24,53 +45,11 @@ async def handle_upload_clothing_item(payload: UploadClothingItemRequest) -> Upl
     with open(image_path, "wb") as f:
         f.write(image_data)
 
-    # Get image embedding using the CLIP model
     try:
         embedding = clip_model.get_image_embedding(image_path)
-
-        # Use the embedding to determine the garment type
-        # This is where you'd implement your actual garment detection logic
-        garment_type = "Tops"  # Example output, adjust based on model output
-
-        if garment_type in GARMENT_TYPES:
-            garment_tags = GARMENT_TYPES[garment_type]  # Retrieve tags for the garment type
-            # In a real system, you'd extract actual garment-specific tags based on the model output
-            tags = garment_tags  # For now, just returning all tags for the "Tops" category
-        else:
-            tags = []
-
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error processing image: {str(e)}")
-
-    # Return response with mock data (in actual, this could involve storing data in DB)
-    return UploadClothingItemResponse(
-        id=str(uuid.uuid4()),
-        filename=filename,
-        tags=tags
-    )
-
-async def handle_upload_clothing_item(payload: UploadClothingItemRequest) -> UploadClothingItemResponse:
-    # Decode base64 image and save to disk
-    image_data = base64.b64decode(payload.image_base64)
-    filename = payload.filename or f"{uuid.uuid4().hex}.jpg"
-    image_path = os.path.join(UPLOAD_DIR, filename)
-
-    with open(image_path, "wb") as f:
-        f.write(image_data)
-
-    # Get image embedding using the CLIP model
-    try:
-        embedding = clip_model.get_image_embedding(image_path)
-
-        # Use the embedding to determine the garment type (this will be handled by the classification logic)
-        garment_type = determine_garment_type(embedding)  # This would be your custom classification step
-
-        if garment_type in GARMENT_TYPES:
-            garment_tags = GARMENT_TYPES[garment_type]  # Retrieve tags for the identified garment type
-            tags = garment_tags
-        else:
-            tags = ["Unknown garment type"]
-
+        garment_type = determine_garment_type(embedding)
+        feature_tags = extract_features(embedding, garment_type)
+        tags = {"garment_type": garment_type, **feature_tags}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error processing image: {str(e)}")
 
@@ -79,3 +58,21 @@ async def handle_upload_clothing_item(payload: UploadClothingItemRequest) -> Upl
         filename=filename,
         tags=tags
     )
+
+async def handle_tag_request(payload: TagRequest) -> TagResponse:
+    image_data = base64.b64decode(payload.image_base64)
+    temp_filename = f"temp_{uuid.uuid4().hex}.jpg"
+    image_path = os.path.join(UPLOAD_DIR, temp_filename)
+
+    with open(image_path, "wb") as f:
+        f.write(image_data)
+
+    try:
+        embedding = clip_model.get_image_embedding(image_path)
+        garment_type = determine_garment_type(embedding)
+        feature_tags = extract_features(embedding, garment_type)
+        tags = [garment_type] + list(feature_tags.values())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error processing image: {str(e)}")
+
+    return TagResponse(tags=tags)
