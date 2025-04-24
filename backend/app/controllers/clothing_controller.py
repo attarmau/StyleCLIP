@@ -49,30 +49,33 @@ async def handle_upload_clothing_item(payload: UploadClothingItemRequest) -> Upl
         tags=tags
     )
 
-
-async def handle_tag_request(payload: TagRequest) -> TagResponse:
-    # Decode base64 image and save as temporary file
+async def handle_upload_clothing_item(payload: UploadClothingItemRequest) -> UploadClothingItemResponse:
+    # Decode base64 image and save to disk
     image_data = base64.b64decode(payload.image_base64)
-    temp_filename = f"temp_{uuid.uuid4().hex}.jpg"
-    image_path = os.path.join(UPLOAD_DIR, temp_filename)
+    filename = payload.filename or f"{uuid.uuid4().hex}.jpg"
+    image_path = os.path.join(UPLOAD_DIR, filename)
 
     with open(image_path, "wb") as f:
         f.write(image_data)
+
+    # Get image embedding using the CLIP model
     try:
         embedding = clip_model.get_image_embedding(image_path)
 
-        # Placeholder for actual tag logic (replace with real logic using embedding)
-        # For this example, let's assume the model determines the garment type as "Pants"
-        garment_type = "Pants"  # Example output from model, replace with real classification
+        # Use the embedding to determine the garment type (this will be handled by the classification logic)
+        garment_type = determine_garment_type(embedding)  # This would be your custom classification step
 
         if garment_type in GARMENT_TYPES:
-            garment_tags = GARMENT_TYPES[garment_type]
-            # here also filter or select tags based on further processing of the embedding
-            tags = garment_tags  # would refine this based on actual model outputs in the final version, 
+            garment_tags = GARMENT_TYPES[garment_type]  # Retrieve tags for the identified garment type
+            tags = garment_tags
         else:
             tags = ["Unknown garment type"]
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error processing image: {str(e)}")
 
-    return TagResponse(tags=tags)
+    return UploadClothingItemResponse(
+        id=str(uuid.uuid4()),
+        filename=filename,
+        tags=tags
+    )
