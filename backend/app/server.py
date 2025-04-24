@@ -5,7 +5,7 @@ from backend.app.models.clip_model import CLIPModel
 from backend.app.recommender import generate_recommendations
 from backend.app.user_data import get_user_behavior
 from backend.app.config.database import init_db, close_db
-from backend.app.recommender import generate_recommendations
+from backend.app.models.recommender import generate_recommendations
 import uvicorn
 
 class MCPServer:
