@@ -1,1 +1,3 @@
-from fastmcp.app.server import MCPServer
+class MCPServer:
+    def __init__(self):
+        print("MCPServer initialized")
