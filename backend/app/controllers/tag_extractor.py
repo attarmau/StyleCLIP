@@ -50,3 +50,13 @@ class TagExtractor:
                 category_top[category] = (tag, score)
 
         return {cat: tag for cat, (tag, _) in category_top.items()}
+
+# TODO: Define core CLIP functionality here
+# This function will:
+# 1. Receive a cropped garment image
+# 2. Use CLIP to compute image embeddings
+# 3. Compare against predefined tag prompts (e.g., fabric, color, fit)
+# 4. Return the top-matching tags per category
+#
+# Note: CLIPModel instance and tag prompts should be initialized once to avoid redundant computation.
+# This placeholder is for future implementation as the tagging module is still under development.
