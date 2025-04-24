@@ -68,3 +68,8 @@ pip install -r requirements.txt
 ```
 uvicorn backend.app.server:app --reload
 ```
+Once the server is running and the database is connected, you should see the following message in the console:
+```
+Database connected
+INFO:     Application startup complete.
+```
