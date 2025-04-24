@@ -5,7 +5,6 @@ from backend.app.models.clip_model import CLIPModel
 from backend.app.recommender import generate_recommendations
 from backend.app.user_data import get_user_behavior
 from backend.app.config.database import init_db, close_db
-from backend.app.models.recommender import generate_recommendations
 import uvicorn
 
 class MCPServer:
@@ -48,7 +47,8 @@ async def shutdown_db():
 @mcp.tool()
 def upload_user_image(image_url: str, user_id: str):
     try:
-        detected_style = clip_model.classify_image_style(image_url)
+        embedding = clip_model.get_image_embedding(image_url)
+        detected_style = "mock_style"
         return {"style": detected_style}
     except Exception as e:
         return {"error": f"Failed to classify image style: {str(e)}"}
