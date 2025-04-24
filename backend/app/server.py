@@ -1,7 +1,6 @@
-# backend/app/server.py
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastmcp.server import MCPServer
+from fastmcp.app.server import MCPServer
 from backend.app.routes.clothing_routes import router as clothing_router
 from backend.app.models.clip_classifier import classify_image_style
 from backend.app.recommender import generate_recommendations
