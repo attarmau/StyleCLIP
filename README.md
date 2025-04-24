@@ -8,7 +8,7 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 ```
 /project-root
 │
-├── /backend
+├── /backend (Done)
 │   ├── Dockerfile            
 │   ├── /app
 │   │   ├── server.py             # FastAPI app code
@@ -31,7 +31,7 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 │   └── app
 │       └── server.py  
 │
-├── /frontend
+├── /frontend (Pending)
 │   ├── Dockerfile        
 │   ├── package.json              # Node.js dependencies (for React)
 │   ├── package-lock.json         # Lock file for React dependencies
