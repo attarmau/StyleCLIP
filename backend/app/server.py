@@ -1,3 +1,5 @@
+# /backend/app/server.py
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.app.routes.clothing_routes import router as clothing_router
@@ -6,6 +8,7 @@ from backend.app.models.recommender import generate_recommendations
 from backend.app.user_data import get_user_behavior
 from backend.app.config.database import init_db, close_db
 import uvicorn
+from backend.app.config.settings import settings  # Import settings to access environment variables
 
 class MCPServer:
     def __init__(self, app):
@@ -24,7 +27,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://yourfrontenddomain.com"],
+    allow_origins=["https://yourfrontenddomain.com"],  # Update this as needed
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -63,4 +66,5 @@ def get_style_recommendations(style: str, user_id: str):
         return {"error": f"Failed to generate recommendations: {str(e)}"}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    print(f"Starting MCPServer on port {settings.PORT}")  
+    uvicorn.run(app, host="0.0.0.0", port=settings.PORT)  
