@@ -8,7 +8,7 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 ```
 /project-root
 │
-├── /backend (Done)
+├── /backend
 │   ├── Dockerfile            
 │   ├── /app
 │   │   ├── server.py             # FastAPI app code
