@@ -26,6 +26,10 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 │   │   │   └── api_keys.py       (pending for API keys or other sensitive data)
 │   │   └── requirements.txt      # Python dependencies for the backend
 │   └── .env                      # Environment variables (make sure to add this to .gitignore)
+│                      
+├── /fastmcp
+│   └── app
+│       └── server.py  
 │
 ├── /frontend
 │   ├── Dockerfile        
