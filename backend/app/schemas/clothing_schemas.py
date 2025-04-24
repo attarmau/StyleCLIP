@@ -1,11 +1,11 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, GetJsonSchemaHandler
+from pydantic.json_schema import JsonSchemaValue
 from typing import List, Optional
 from datetime import datetime
 from bson import ObjectId
 
-
 # --------------------------
-# Custom ObjectId for Pydantic
+# Custom ObjectId for Pydantic v2
 # --------------------------
 class PyObjectId(ObjectId):
     @classmethod
@@ -19,8 +19,12 @@ class PyObjectId(ObjectId):
         return ObjectId(v)
 
     @classmethod
-    def __modify_schema__(cls, field_schema):
-        field_schema.update(type="string")
+    def __get_pydantic_json_schema__(
+        cls, core_schema, handler: GetJsonSchemaHandler
+    ) -> JsonSchemaValue:
+        json_schema = handler(core_schema)
+        json_schema.update(type="string")
+        return json_schema
 
 
 # --------------------------
@@ -34,7 +38,7 @@ class ClothingItemInDB(BaseModel):  # formerly ClothingItemModel
     uploaded_at: Optional[datetime] = Field(default_factory=datetime.utcnow)
 
     class Config:
-        allow_population_by_field_name = True
+        populate_by_name = True  # replaces `allow_population_by_field_name` in v2
         arbitrary_types_allowed = True
         json_encoders = {ObjectId: str}
 
