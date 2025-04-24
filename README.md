@@ -11,7 +11,13 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 ├── /backend
 │   ├── Dockerfile                # Backend Dockerfile
 │   ├── /app
-│   │   ├── main.py               # FastAPI app code
+│   │   ├── server.py             # FastAPI app code
+│   │   ├── /routes
+│   │   │   └── clothing_routes.py
+│   │   ├── /controllers
+│   │   │   └── clothing_controller.py
+│   │   ├── schemas/
+│   │   │   └── clothing_schemas.py
 │   │   └── requirements.txt      # Python dependencies for the backend
 │   └── .env                      # Environment variables (make sure to add this to .gitignore)
 │
