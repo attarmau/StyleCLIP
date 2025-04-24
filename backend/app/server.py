@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from backend.app.routes.clothing_routes import router as clothing_router
 from backend.app.models.clip_model import CLIPModel
 from backend.app.models.recommender import generate_recommendations
-from backend.app.user_data import get_user_behavior
 from backend.app.config.database import init_db, close_db
 from backend.app.config.settings import settings
 import uvicorn
@@ -57,12 +56,12 @@ def upload_user_image(image_url: str, user_id: str):
 @mcp.tool()
 def get_style_recommendations(style: str, user_id: str):
     try:
-        user_clicks = get_user_behavior(user_id)
+        user_clicks = ["floral", "loose-fit", "cotton"]  # mock data
         recommendations = generate_recommendations(style, user_clicks)
         return recommendations
     except Exception as e:
         return {"error": f"Failed to generate recommendations: {str(e)}"}
 
 if __name__ == "__main__":
-    print(f"Starting MCPServer on port {settings.PORT}")  
+    print(f"Starting MCPServer on port {settings.PORT}")
     uvicorn.run("backend.app.server:app", host="0.0.0.0", port=settings.PORT, reload=True)
