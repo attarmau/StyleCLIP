@@ -1,1 +1,1 @@
-from fastmcp.server import MCPServer
+from fastmcp.app.server import MCPServer
