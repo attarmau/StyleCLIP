@@ -5,8 +5,8 @@ from backend.app.models.clip_model import CLIPModel
 from backend.app.models.recommender import generate_recommendations
 from backend.app.user_data import get_user_behavior
 from backend.app.config.database import init_db, close_db
+from backend.app.config.settings import settings
 import uvicorn
-from backend.app.config.settings import settings 
 
 class MCPServer:
     def __init__(self, app):
@@ -25,7 +25,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -65,4 +65,4 @@ def get_style_recommendations(style: str, user_id: str):
 
 if __name__ == "__main__":
     print(f"Starting MCPServer on port {settings.PORT}")  
-    uvicorn.run(app, host="0.0.0.0", port=settings.PORT)  
+    uvicorn.run("backend.app.server:app", host="0.0.0.0", port=settings.PORT, reload=True)
