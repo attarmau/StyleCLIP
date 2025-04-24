@@ -46,7 +46,8 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 │
 ├── .gitignore                    # Git ignore file (include .env, node_modules, etc.)
 ├── docker-compose.yml            # Docker Compose configuration
-└── README.md                     # Project documentation
+├── README.md                     # Project documentation
+└── requirements.txt
 
 
 ```
