@@ -54,17 +54,17 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 
 ## Quick Start Guide
 ### Step 1: Clone the GitHub Project
-## Step 2: Set Up the Python Environment
+### Step 2: Set Up the Python Environment
 ```
 python -m venv venv
 source venv/bin/activate  # On macOS or Linux
 venv\Scripts\activate     # On Windows
 ```
-## Step 3: Install Dependencies
+### Step 3: Install Dependencies
 ```
 pip install -r requirements.txt
 ```
-## Step 4: Start the FastAPI Server
+### Step 4: Start the FastAPI Server
 ```
 uvicorn backend.app.server:app --reload
 ```
