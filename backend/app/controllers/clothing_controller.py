@@ -9,6 +9,7 @@ from backend.app.schemas.clothing_schemas import (
     TagResponse
 )
 from backend.app.models.clip_model import CLIPModel
+from backend.app.config.tag_list_en import GARMENT_TYPES  # Import the tag categories
 
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
@@ -26,8 +27,18 @@ async def handle_upload_clothing_item(payload: UploadClothingItemRequest) -> Upl
     # Get image embedding using the CLIP model
     try:
         embedding = clip_model.get_image_embedding(image_path)
-        # Placeholder tags based on the image (you can use real logic here)
-        tags = ["style", "example"]
+
+        # Use the embedding to determine the garment type
+        # This is where you'd implement your actual garment detection logic
+        garment_type = "Tops"  # Example output, adjust based on model output
+
+        if garment_type in GARMENT_TYPES:
+            garment_tags = GARMENT_TYPES[garment_type]  # Retrieve tags for the garment type
+            # In a real system, you'd extract actual garment-specific tags based on the model output
+            tags = garment_tags  # For now, just returning all tags for the "Tops" category
+        else:
+            tags = []
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error processing image: {str(e)}")
 
@@ -47,12 +58,20 @@ async def handle_tag_request(payload: TagRequest) -> TagResponse:
 
     with open(image_path, "wb") as f:
         f.write(image_data)
-
-    # Run the CLIP model to get the embedding and tags
     try:
         embedding = clip_model.get_image_embedding(image_path)
+
         # Placeholder for actual tag logic (replace with real logic using embedding)
-        tags = ["mock", "clip", "tags"]
+        # For this example, let's assume the model determines the garment type as "Pants"
+        garment_type = "Pants"  # Example output from model, replace with real classification
+
+        if garment_type in GARMENT_TYPES:
+            garment_tags = GARMENT_TYPES[garment_type]
+            # here also filter or select tags based on further processing of the embedding
+            tags = garment_tags  # would refine this based on actual model outputs in the final version, 
+        else:
+            tags = ["Unknown garment type"]
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error processing image: {str(e)}")
 
