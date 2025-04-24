@@ -1,5 +1,3 @@
-# /backend/app/server.py
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.app.routes.clothing_routes import router as clothing_router
@@ -8,7 +6,7 @@ from backend.app.models.recommender import generate_recommendations
 from backend.app.user_data import get_user_behavior
 from backend.app.config.database import init_db, close_db
 import uvicorn
-from backend.app.config.settings import settings  # Import settings to access environment variables
+from backend.app.config.settings import settings 
 
 class MCPServer:
     def __init__(self, app):
