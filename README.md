@@ -9,7 +9,7 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 /project-root
 │
 ├── /backend
-│   ├── Dockerfile                # Backend Dockerfile
+│   ├── Dockerfile            
 │   ├── /app
 │   │   ├── server.py             # FastAPI app code
 │   │   ├── /routes
@@ -23,7 +23,7 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 │   └── .env                      # Environment variables (make sure to add this to .gitignore)
 │
 ├── /frontend
-│   ├── Dockerfile                # Frontend Dockerfile
+│   ├── Dockerfile        
 │   ├── package.json              # Node.js dependencies (for React)
 │   ├── package-lock.json         # Lock file for React dependencies
 │   ├── /public
