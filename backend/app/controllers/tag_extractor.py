@@ -1,42 +1,51 @@
 import torch
 from typing import List, Dict, Tuple
-from backend.app.models.clip_model import CLIPModel  # Adjusted import for the new folder structure
+from backend.app.models.clip_model import CLIPModel
+from backend.app.config.tag_list_en import GARMENT_TYPES
 
 class TagExtractor:
-    def __init__(self, tag_dict: Dict[str, List[str]], model_name="ViT-B/32"):
+    def __init__(self, tag_dict: Dict[str, Dict[str, List[str]]], model_name="ViT-B/32"):
         self.clip_model = CLIPModel(model_name)
         self.tag_dict = tag_dict
-        self.flattened_tags, self.tag_to_category = self._flatten_tags()
-        self.tag_embeddings = self._compute_tag_embeddings()
+        self.garment_types = list(tag_dict.keys())  # e.g., ["Tops", "Pants", "Skirts", ...]
+        self.garment_type_embeddings = self._compute_garment_type_embeddings()
 
-    def _flatten_tags(self) -> Tuple[List[str], Dict[str, str]]:
-        tags = []
-        mapping = {}
-        for category, tag_list in self.tag_dict.items():
-            for tag in tag_list:
-                tags.append(tag)
-                mapping[tag] = category
-        return tags, mapping
-
-    def _compute_tag_embeddings(self) -> Dict[str, torch.Tensor]:
+    def _compute_garment_type_embeddings(self) -> Dict[str, torch.Tensor]:
         embeddings = {}
-        for tag in self.flattened_tags:
-            embeddings[tag] = self.clip_model.get_text_embedding(tag)
+        for g_type in self.garment_types:
+            embeddings[g_type] = self.clip_model.get_text_embedding(f"a photo of {g_type.lower()}")
         return embeddings
 
-    def extract_tags(
-        self, image_embedding: torch.Tensor, top_k: int = 1
-    ) -> Dict[str, str]:
+    def determine_garment_type(self, image_embedding: torch.Tensor) -> str:
+        best_score = float("-inf")
+        best_type = "Unknown"
+        for g_type, g_emb in self.garment_type_embeddings.items():
+            score = torch.cosine_similarity(image_embedding, g_emb).item()
+            if score > best_score:
+                best_score = score
+                best_type = g_type
+        return best_type
+
+    def extract_tags(self, image_embedding: torch.Tensor, garment_type: str, top_k: int = 1) -> Dict[str, str]:
         tag_scores: Dict[str, float] = {}
 
-        for tag, tag_emb in self.tag_embeddings.items():
+        tag_categories = self.tag_dict.get(garment_type, {})
+        flattened_tags = []
+        tag_to_category = {}
+        for category, tags in tag_categories.items():
+            for tag in tags:
+                flattened_tags.append(tag)
+                tag_to_category[tag] = category
+
+        for tag in flattened_tags:
+            tag_emb = self.clip_model.get_text_embedding(tag)
             similarity = torch.cosine_similarity(image_embedding, tag_emb).item()
             tag_scores[tag] = similarity
 
-        # Select top tags per category
+        # Select top tag per category
         category_top: Dict[str, Tuple[str, float]] = {}
         for tag, score in tag_scores.items():
-            category = self.tag_to_category[tag]
+            category = tag_to_category[tag]
             if category not in category_top or score > category_top[category][1]:
                 category_top[category] = (tag, score)
 
