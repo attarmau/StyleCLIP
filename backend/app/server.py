@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.app.routes.clothing_routes import router as clothing_router
-from backend.app.models.clip_classifier import classify_image_style
+from backend.app.models.clip_model import CLIPModel
 from backend.app.recommender import generate_recommendations
 from backend.app.user_data import get_user_behavior
 from backend.app.config.database import init_db, close_db
@@ -32,6 +32,8 @@ app.add_middleware(
 
 app.include_router(clothing_router)
 
+clip_model = CLIPModel()
+
 mcp = MCPServer(app)
 
 @app.on_event("startup")
@@ -45,7 +47,7 @@ async def shutdown_db():
 @mcp.tool()
 def upload_user_image(image_url: str, user_id: str):
     try:
-        detected_style = classify_image_style(image_url)
+        detected_style = clip_model.classify_image_style(image_url)
         return {"style": detected_style}
     except Exception as e:
         return {"error": f"Failed to classify image style: {str(e)}"}
