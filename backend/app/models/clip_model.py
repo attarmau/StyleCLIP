@@ -72,3 +72,24 @@ class CLIPModel:
             reverse=True,
         )
         return sorted_matches
+
+    # New method for classifying image style based on predefined styles
+    def classify_image_style(self, image_path: str) -> str:
+        # You can define predefined styles or categories here
+        predefined_styles = {
+            "casual": ["jeans", "t-shirt", "sneakers"],
+            "formal": ["suit", "dress shoes", "blazer"],
+            "sporty": ["track pants", "sneakers", "hoodie"],
+            # Add more styles as needed
+        }
+
+        # Assuming we have a way to match the image with a predefined style
+        # This can be extended using the image embeddings and comparing them with style categories
+        image_embedding = self.get_image_embedding(image_path)
+
+        # Here, you can integrate logic to compare the image embedding to predefined categories
+        # For simplicity, we'll return a placeholder style, or use more complex logic to classify
+        # You could implement this by using cosine similarity with predefined text embeddings for styles
+
+        # Placeholder logic for now
+        return "casual"  # Example output, change based on your actual classification logic
