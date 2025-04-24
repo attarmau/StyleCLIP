@@ -89,7 +89,7 @@ This will:
 
 ### 📌 Quick Tips
 
-Visit your app at: http://localhost:8000/docs
+Visit the app at: http://localhost:8000/docs
 
 View MongoDB UI: http://localhost:8081 (use user: root, password: example)
 
