@@ -6,8 +6,8 @@ db = None
 
 async def init_db():
     global client, db
-    client = AsyncIOMotorClient(settings.MONGO_URI)  # Set the Mongo URI from settings
-    db = client[settings.MONGO_DB_NAME]  # Name of your database
+    client = AsyncIOMotorClient(settings.MONGO_URI) 
+    db = client[settings.MONGO_DB_NAME]  # Name of the database
     print("Database connected")
 
 async def close_db():
