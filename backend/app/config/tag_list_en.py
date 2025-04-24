@@ -1,5 +1,3 @@
-# /backend/app/config/tag_list_en.py
-
 GARMENT_TYPES = {
     "Tops": {
         "fabric": [
