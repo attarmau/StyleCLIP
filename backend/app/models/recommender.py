@@ -1,24 +1,87 @@
 # recommender.py
+import numpy as np
+from typing import List, Dict
+from backend.app.models.clip_model import CLIPModel
+import json
+import os
 
-from typing import List
-from backend.app.controllers.clothing_controller import get_clothing_items_by_style
+clip_model = CLIPModel()
 
-def generate_recommendations(style: str, user_behavior: List[str]) -> List[str]:
+# Load predefined tag embeddings (mocked for now)
+TAG_EMBEDDINGS_PATH = "backend/app/data/tag_embeddings.json"
+
+if os.path.exists(TAG_EMBEDDINGS_PATH):
+    with open(TAG_EMBEDDINGS_PATH, "r") as f:
+        TAG_EMBEDDINGS = json.load(f)
+else:
+    TAG_EMBEDDINGS = {}  # fallback if file doesn't exist
+
+
+def encode_tags_to_embeddings(tags: Dict[str, List[str]]) -> np.ndarray:
     """
-    Generate clothing recommendations based on the given style and user behavior.
-    
-    :param style: The clothing style the user prefers
-    :param user_behavior: A list of items the user has previously interacted with
-    :return: A list of recommended clothing items
+    Encode each tag value using CLIP and average to get garment-level embedding.
     """
-    
-    # Example: If the style is available in the database or in the controller, fetch matching items
-    # Note: might use a more complex recommendation algorithm here later
-  
-    recommended_items = get_clothing_items_by_style(style)
-    
-    # Filter or adjust the recommendations based on user behavior
-    # This could be using a collaborative filtering approach or item-based filtering
-    filtered_items = [item for item in recommended_items if item in user_behavior]
-    
-    return filtered_items
+    embeddings = []
+    for category, values in tags.items():
+        for tag in values:
+            if tag in TAG_EMBEDDINGS:
+                embeddings.append(np.array(TAG_EMBEDDINGS[tag]))
+            else:
+                embeddings.append(clip_model.get_text_embedding(tag))
+    if embeddings:
+        return np.mean(embeddings, axis=0)
+    return np.zeros(512)  # default vector
+
+
+def cosine_similarity(a: np.ndarray, b: np.ndarray) -> float:
+    return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
+
+
+def generate_recommendations(garment_tags: List[Dict[str, List[str]]], user_clicks: List[str] = []) -> List[Dict]:
+    """
+    Recommend similar garments by comparing multi-tag embeddings.
+    """
+    results = []
+    for tags in garment_tags:
+        garment_embedding = encode_tags_to_embeddings(tags)
+
+        # Compare with database embeddings (mocked here)
+        similarities = []
+        for db_item in MOCK_DB_ITEMS:
+            db_embedding = encode_tags_to_embeddings(db_item['tags'])
+            similarity = cosine_similarity(garment_embedding, db_embedding)
+            similarities.append((similarity, db_item))
+
+        top_matches = sorted(similarities, key=lambda x: x[0], reverse=True)[:3]
+        results.append({
+            "input_tags": tags,
+            "recommendations": [match[1] for match in top_matches]
+        })
+
+    return results
+
+
+# MOCKED DB GARMENT ENTRIES (for testing)
+MOCK_DB_ITEMS = [
+    {
+        "id": "1",
+        "tags": {
+            "category": ["Top"],
+            "fabric": ["Knit"],
+            "silhouette": ["Boxy"],
+            "fit": ["Loose fit"],
+            "color": ["Ivory"]
+        }
+    },
+    {
+        "id": "2",
+        "tags": {
+            "category": ["Pants"],
+            "fabric": ["Denim"],
+            "silhouette": ["Skinny"],
+            "fit": ["Tight fit"],
+            "color": ["Navy"]
+        }
+    },
+    # Add more items as needed
+]
