@@ -73,6 +73,8 @@ Once the server is running and the database is connected, you should see the fol
 Database connected
 INFO:     Application startup complete.
 ```
+<img width="750" alt="Screenshot 2025-04-25 at 1 15 45 AM" src="https://github.com/user-attachments/assets/7f3fc403-fb33-4107-a00c-61796a48ecec" />
+
 
 What’s completed so far:
 1. FastAPI server is up and running
