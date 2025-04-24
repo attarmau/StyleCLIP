@@ -1,53 +1,57 @@
-# recommender.py
+# backend/app/models/recommender.py
+
 import numpy as np
 from typing import List, Dict
-from backend.app.models.clip_model import CLIPModel
-import json
-import os
+from backend.app.controllers.tag_extractor import TagExtractor
+from backend.app.config.tag_list_en import GARMENT_TYPES
+from backend.app.config.database import get_db  # Assuming you will implement a function to get your DB connection
 
-clip_model = CLIPModel()
-
-# Load predefined tag embeddings (mocked for now)
-TAG_EMBEDDINGS_PATH = "backend/app/data/tag_embeddings.json"
-
-if os.path.exists(TAG_EMBEDDINGS_PATH):
-    with open(TAG_EMBEDDINGS_PATH, "r") as f:
-        TAG_EMBEDDINGS = json.load(f)
-else:
-    TAG_EMBEDDINGS = {}  # fallback if file doesn't exist
-
+# Use TagExtractor for consistent tag embedding
+tag_extractor = TagExtractor(tag_dict=GARMENT_TYPES)
 
 def encode_tags_to_embeddings(tags: Dict[str, List[str]]) -> np.ndarray:
     """
-    Encode each tag value using CLIP and average to get garment-level embedding.
+    Encode each tag value using CLIP and average to get a garment-level embedding.
+    Uses TagExtractor to maintain consistent embeddings.
     """
     embeddings = []
     for category, values in tags.items():
         for tag in values:
-            if tag in TAG_EMBEDDINGS:
-                embeddings.append(np.array(TAG_EMBEDDINGS[tag]))
-            else:
-                embeddings.append(clip_model.get_text_embedding(tag))
+            embedding = tag_extractor.tag_embeddings.get(tag)
+            if embedding is None:
+                embedding = tag_extractor.clip_model.get_text_embedding(tag)
+            embeddings.append(embedding.numpy())
     if embeddings:
         return np.mean(embeddings, axis=0)
-    return np.zeros(512)  # default vector
-
+    return np.zeros(512)  # Default vector if no tags present
 
 def cosine_similarity(a: np.ndarray, b: np.ndarray) -> float:
     return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
 
+async def get_garment_items_from_db() -> List[Dict]:
+    """
+    Fetch garment items from the real database.
+    Modify this based on your actual database logic.
+    """
+    db = get_db()  # This is a placeholder, assuming you have a function to connect to your DB
+    garments = await db.garments.find({}).to_list(length=100)  # Example MongoDB query to fetch garments
+    return garments
 
-def generate_recommendations(garment_tags: List[Dict[str, List[str]]], user_clicks: List[str] = []) -> List[Dict]:
+async def generate_recommendations(garment_tags: List[Dict[str, List[str]]], user_clicks: List[str] = []) -> List[Dict]:
     """
     Recommend similar garments by comparing multi-tag embeddings.
     """
     results = []
+    
+    # Fetch real garment items from the database
+    garments_from_db = await get_garment_items_from_db()
+    
     for tags in garment_tags:
         garment_embedding = encode_tags_to_embeddings(tags)
 
-        # Compare with database embeddings (mocked here)
+        # Compare with database garments
         similarities = []
-        for db_item in MOCK_DB_ITEMS:
+        for db_item in garments_from_db:
             db_embedding = encode_tags_to_embeddings(db_item['tags'])
             similarity = cosine_similarity(garment_embedding, db_embedding)
             similarities.append((similarity, db_item))
@@ -59,29 +63,3 @@ def generate_recommendations(garment_tags: List[Dict[str, List[str]]], user_clic
         })
 
     return results
-
-
-# MOCKED DB GARMENT ENTRIES (for testing)
-MOCK_DB_ITEMS = [
-    {
-        "id": "1",
-        "tags": {
-            "category": ["Top"],
-            "fabric": ["Knit"],
-            "silhouette": ["Boxy"],
-            "fit": ["Loose fit"],
-            "color": ["Ivory"]
-        }
-    },
-    {
-        "id": "2",
-        "tags": {
-            "category": ["Pants"],
-            "fabric": ["Denim"],
-            "silhouette": ["Skinny"],
-            "fit": ["Tight fit"],
-            "color": ["Navy"]
-        }
-    },
-    # Add more items as needed
-]
