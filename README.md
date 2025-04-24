@@ -16,6 +16,7 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 │   │   │   └── clothing_routes.py
 │   │   ├── /controllers
 │   │   │   └── clothing_controller.py
+│   │   │   └──clothing_tagging.py
 │   │   │   └── tag_extractor.py         # Pending: define core CLIP functionality
 │   │   ├── schemas/
 │   │   │   └── clothing_schemas.py
