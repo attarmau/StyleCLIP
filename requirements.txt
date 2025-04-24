@@ -8,3 +8,4 @@ transformers
 sentence-transformers
 motor
 python-dotenv
+fastmcp==2.0.0  
