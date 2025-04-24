@@ -1,7 +1,7 @@
 # FastMCP_RecSys
 This is a CLIP-Based Fashion Recommender with MCP. 
 
-# Scenario
+# Mockup
 A user uploads a clothing image → YOLO detects clothing → CLIP encodes → Recommend similar
 
 # Folder Structure
