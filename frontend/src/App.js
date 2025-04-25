@@ -1,4 +1,8 @@
 import { useState } from 'react';
+import { uploadClothingItem, tagClothingImage } from './utils/api';
+import ImageUpload from './components/ImageUpload';
+import DetectedTags from './components/DetectedTags';
+import Recommendations from './components/Recommendations';
 
 function App() {
   const [image, setImage] = useState(null);
