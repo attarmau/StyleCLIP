@@ -3,20 +3,30 @@ import { useState } from 'react';
 function App() {
   const [image, setImage] = useState(null);
   const [detectedItems, setDetectedItems] = useState([]);
-  const [recommendations, setRecommendations] = useState([]);
 
   const handleUpload = async () => {
-    const formData = new FormData();
-    formData.append("image", image);
+    const reader = new FileReader();
+    reader.onloadend = async () => {
+      const base64Image = reader.result.split(',')[1];
 
-    const res = await fetch("http://localhost:8000/upload", {
-      method: "POST",
-      body: formData,
-    });
+      const payload = {
+        filename: image.name,
+        image_base64: base64Image
+      };
 
-    const data = await res.json();
-    setTags(data.tags || []);
-    setRecommendations(data.recommendations || []);
+      const res = await fetch('http://localhost:8000/clothing/upload', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await res.json();
+      setDetectedItems(data.tags || {});
+    };
+
+    if (image) {
+      reader.readAsDataURL(image);
+    }
   };
 
   return (
@@ -36,23 +46,14 @@ function App() {
         Submit
       </button>
 
-      {tags.length > 0 && (
-        <div className="mt-6">
-          <h2 className="text-xl font-semibold">Detected Tags:</h2>
-          <ul className="list-disc ml-6">
-            {tags.map((tag, i) => (
-              <li key={i}>{tag}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {recommendations.length > 0 && (
-        <div className="mt-6">
-          <h2 className="text-xl font-semibold">Recommended Clothes:</h2>
-          <ul className="list-disc ml-6">
-            {recommendations.map((item, i) => (
-              <li key={i}>{item.name}</li>
+      {detectedItems && (
+        <div className="mt-6 w-full max-w-md bg-white p-4 rounded shadow">
+          <h2 className="text-xl font-semibold mb-2">Detected Tags:</h2>
+          <ul className="list-disc ml-6 space-y-1">
+            {Object.entries(detectedItems).map(([key, value]) => (
+              <li key={key}>
+                <strong>{key}:</strong> {value}
+              </li>
             ))}
           </ul>
         </div>
