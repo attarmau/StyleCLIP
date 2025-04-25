@@ -1,3 +1,4 @@
+# Feel free to adjust this mapping
 GARMENT_TYPES = {
     "Tops": {
         "fabric": [
