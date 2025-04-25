@@ -46,7 +46,8 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 │   │   ├── /utils
 │   │   │   └── api.js             
 │   │   ├── App.js                    # Main React component
-│   │   ├── index.js              
+│   │   ├── index.js
+│   │   ├── index.css            
 │   │   ├── tailwind.config.js        
 │   │   ├── postcss.config.js        
 │   │   └── .env                      
