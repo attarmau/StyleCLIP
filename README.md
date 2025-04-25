@@ -32,24 +32,28 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 │   └── app
 │       └── server.py  
 │
-├── /frontend (Pending)
+├── /frontend 
 │   ├── Dockerfile        
-│   ├── package.json              # Node.js dependencies (for React)
-│   ├── package-lock.json         # Lock file for React dependencies
+│   ├── package.json              
+│   ├── package-lock.json         
 │   ├── /public
-│   │   └── index.html            # HTML file for the frontend (React app is mounted here)
+│   │   └── index.html            
 │   ├── /src
-│   │   ├── App.js                # Main React component
-│   │   └── index.js              # React entry point
-│   ├── tailwind.config.js        # Tailwind CSS config
-│   ├── postcss.config.js         # PostCSS config
-│   └── .env                      # Frontend environment variables (add to .gitignore)
-│
-├── .gitignore                    # Git ignore file (include .env, node_modules, etc.)
-├── docker-compose.yml            # Docker Compose configuration
-├── README.md                     # Project documentation
-└── requirements.txt
-
+│   │   ├── /components            
+│   │   │   ├── ImageUpload.jsx    
+│   │   │   ├── DetectedTags.jsx   
+│   │   │   └── Recommendations.jsx 
+│   │   ├── /utils
+│   │   │   └── api.js             
+│   │   ├── App.js                    # Main React component
+│   │   ├── index.js              
+│   │   ├── tailwind.config.js        
+│   │   ├── postcss.config.js        
+│   │   └── .env                      
+│   ├── .gitignore                    
+│   ├── docker-compose.yml            
+│   └── README.md                    
+└────── requirements.txt
 
 ```
 
