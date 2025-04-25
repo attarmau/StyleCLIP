@@ -83,9 +83,10 @@ INFO:     Application startup complete.
 
 
 What’s completed so far:
-1. FastAPI server is up and running
-2. Database connection is set up
-3. Backend architecture is functional
+1. FastAPI server is up and running (24 Apr)
+2. Database connection is set up (24 Apr)
+3. Backend architecture is functional (24 Apr)
+4. Basic front-end UI for uploading picture (25 Apr)
 
 Next Step:
 1. Evaluate CLIP’s tagging accuracy on sample clothing images
