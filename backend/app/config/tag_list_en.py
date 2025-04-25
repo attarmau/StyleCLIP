@@ -1,96 +1,425 @@
 # Feel free to adjust this mapping
-GARMENT_TYPES = {
+garment_types = {
     "Tops": {
+        "garment_name": [
+            "Cami Top",
+            "T-shirt",
+            "Tank top",
+            "Crop top",
+            "Hoodie",
+            "Blouse",
+            "Shirt",
+            "Polo shirt",
+            "Bodysuit",
+            "Knit top",
+            "Wrap top",
+            "Vest top",
+            "Bandeau top",
+            "Tunic top",
+            "Cold-shoulder top",
+            "Off-the-shoulder top",
+            "Sweatshirt",
+            "Drapped t-shirt",
+            "One-shoulder top",
+            "Henley shirt",
+            "Wrap Shirt",
+            "Tie Shirt",
+            "Drawstring Shirt",
+            "Trapeze Shirt",
+            "Baseball Shirt",
+            "Camp Shirt",
+            "Tie Blouse",
+            "Drawstring blouse",
+            "Peplum blouse",
+            "Tube top",
+            "Halterneck top",
+            "Wrap Top",
+            "Peasant top",
+            "Pleated top",
+            "Smocked top",
+            "Cardigan",
+            "Bralette",
+            "Baby tee"
+        ],
         "fabric": [
-            "Dri-FIT", "Tulle", "Suede", "Canvas", "Faux fur", "Fleece", "Brocade", "Neoprene", "Waterproof fabric",
-            "Windbreaker fabric", "Thermal fabric", "Activewear fabric", "Metallic fabric", "Knit", "Crochet knit",
-            "Embellished fabric", "Eyelet fabric", "Ripstop fabric", "Textured fabric", "Seersucker", "Embroidered Mesh",
+            "Dri-FIT",
+            "Tulle",
+            "Suede",
+            "Canvas",
+            "Faux fur",
+            "Fleece",
+            "Brocade",
+            "Neoprene",
+            "Waterproof fabric",
+            "Windbreaker fabric",
+            "Thermal fabric",
+            "Activewear fabric",
+            "Metallic fabric",
+            "Knit",
+            "Crochet knit",
+            "Embellished fabric",
+            "Eyelet fabric",
+            "Ripstop fabric",
+            "Textured fabric",
+            "Seersucker",
+            "Embroidered Mesh",
             "Ribbed Knit"
         ],
         "silhouette": [
-            "Straight silhouette", "Slim fit", "Natural fit", "Flare", "Trapeze", "Fitted", "Fit-and-flare", "Boxy",
+            "Straight silhouette",
+            "Slim fit",
+            "Natural fit",
+            "Flare",
+            "Trapeze",
+            "Fitted",
+            "Fit-and-flare",
+            "Boxy",
             "High-waisted silhouette"
         ],
         "fit": [
-            "Tight fit", "Slim fit", "Regular fit", "Relaxed fit", "Loose fit", "Oversized fit", "Tailored fit",
-            "Softly tailored fit", "Structured fit"
+            "Tight fit",
+            "Slim fit",
+            "Regular fit",
+            "Relaxed fit",
+            "Loose fit",
+            "Oversized fit",
+            "Tailored fit",
+            "Softly tailored fit",
+            "Structured fit"
         ],
         "color": [
-            "White", "Ivory", "Off-white", "Bone", "Black", "Black melange", "Charcoal", "Grey", "Heather gray", "Light grey",
-            "Graphite grey", "Gunmetal"
-        ]
-    },
-    "Pants": {
-        "fabric": [
-            "Denim", "Cotton", "Polyester", "Linen", "Corduroy"
-        ],
-        "silhouette": [
-            "Straight", "Slim fit", "Baggy", "Peg top", "Boot cut", "Bell bottom", "Flare", "Wide leg", "Skinny"
-        ],
-        "fit": [
-            "Tight fit", "Slim fit", "Relaxed fit", "Loose fit", "Regular fit"
-        ],
-        "color": [
-            "Navy", "Black", "Beige", "Khaki", "Gray", "Charcoal", "Olive"
+            "White",
+            "Ivory",
+            "Off-white",
+            "Bone",
+            "Black",
+            "Black melange",
+            "Charcoal",
+            "Grey",
+            "Heather gray",
+            "Light grey",
+            "Graphite grey",
+            "Gunmetal"
         ]
     },
     "Dress": {
+        "garment_name": [
+            "A-line dress",
+            "Shift dress",
+            "Wrap dress",
+            "Cheongsam",
+            "Sailor dress",
+            "Tulip dress",
+            "Bustier dress",
+            "Sundress",
+            "Peasant dress",
+            "Pleated dress",
+            "Bubble/balloon dress",
+            "Cape dress",
+            "Corset dress",
+            "Off-shoulder dress",
+            "One-shoulder dress",
+            "Babydoll dress",
+            "Handkerchief hem dress",
+            "Peplum dress",
+            "tube/strapless dress",
+            "Tiered dress",
+            "Dropped waist dress",
+            "Bodycon dress",
+            "Trapeze dress",
+            "Flared dress",
+            "Shirt dress",
+            "Polo shirt dress",
+            "Bias dress",
+            "Slip dress",
+            "Asymmetric dress",
+            "Straight dress",
+            "Column dress",
+            "Tennis dress",
+            "Tank dress"
+        ],
         "fabric": [
-            "Cotton", "Linen", "Silk", "Velvet", "Jersey", "Satin", "Chiffon", "Organza"
+            "Cotton",
+            "Linen",
+            "Silk",
+            "Velvet",
+            "Jersey",
+            "Satin",
+            "Chiffon",
+            "Organza"
         ],
         "silhouette": [
-            "A-line", "H-line / Straight shape", "I-line / Column / Shift", "V-line", "X-line", "Y-line", "Tent shape",
-            "Natural shape", "Sheath", "Fit-and-flare", "Slim", "Hourglass", "Asymmetric", "Princess line", "Empire line",
-            "Balloon", "Shift"
+            "A-line",
+            "H-line / Straight shape",
+            "I-line / Column / Shift",
+            "V-line",
+            "X-line",
+            "Y-line",
+            "Tent shape",
+            "Natural shape",
+            "Sheath",
+            "Fit-and-flare",
+            "Slim",
+            "Hourglass",
+            "Asymmetric",
+            "Princess line",
+            "Empire line",
+            "Balloon",
+            "Shift"
         ],
         "fit": [
-            "Tight fit", "Slim fit", "Regular fit", "Relaxed fit", "Loose fit", "Oversized fit", "Tailored fit"
+            "Tight fit",
+            "Slim fit",
+            "Regular fit",
+            "Relaxed fit",
+            "Loose fit",
+            "Oversized fit",
+            "Tailored fit"
         ],
         "color": [
-            "Red", "Pink", "Purple", "Blue", "Green", "Yellow", "Orange", "Black", "White", "Ivory"
+            "Red",
+            "Pink",
+            "Purple",
+            "Blue",
+            "Green",
+            "Yellow",
+            "Orange",
+            "Black",
+            "White",
+            "Ivory"
         ]
     },
     "One-piece": {
+        "garment_name": [
+            "Romper",
+            "Jumpsuit",
+            "Playsuit (longer length than romper)"
+        ],
         "fabric": [
-            "Neoprene", "Spandex", "Jersey", "Polyester", "Lycra"
+            "Neoprene",
+            "Spandex",
+            "Jersey",
+            "Polyester",
+            "Lycra"
         ],
         "silhouette": [
-            "Straight-cut", "Wide-leg", "Flare", "Bell bottom", "Tapered", "Slim-fit", "Skinny"
+            "Straight-cut",
+            "Wide-leg",
+            "Flare",
+            "Bell bottom",
+            "Tapered",
+            "Slim-fit",
+            "Skinny"
         ],
         "fit": [
-            "Tight fit", "Slim fit", "Relaxed fit"
+            "Tight fit",
+            "Slim fit",
+            "Relaxed fit"
         ],
         "color": [
-            "Black", "White", "Navy", "Red", "Green"
+            "Black",
+            "White",
+            "Navy",
+            "Red",
+            "Green"
+        ]
+    },
+    "Pants": {
+        "garment_name": [
+            "Skinny jeans",
+            "Tapered jeans",
+            "Baggy jeans",
+            "Wide leg jeans",
+            "Flared bottom jeans",
+            "Cargo jeans",
+            "Button fly jeans",
+            "Jeggings",
+            "Ripped jeans",
+            "Hot pants",
+            "Shorts",
+            "Cargo shorts",
+            "Preppy shorts",
+            "Baggy bermudas",
+            "Straight pants",
+            "Slim-fit pants",
+            "Bell-bottom pants",
+            "Tailored pants",
+            "Tuxedo pants",
+            "Palazzo Pants",
+            "Cargo pants",
+            "Zip-off Convertable pants",
+            "Pajama Pants",
+            "High-waisted pants",
+            "Baggy pants",
+            "Tapered baggy pants",
+            "Leggings",
+            "Yoga pants",
+            "Sweatpants",
+            "Wide leg pants",
+            "Mom jeans",
+            "Joggers"
+        ],
+        "fabric": [
+            "Denim",
+            "Cotton",
+            "Polyester",
+            "Linen",
+            "Corduroy"
+        ],
+        "silhouette": [
+            "Straight",
+            "Slim fit",
+            "Baggy",
+            "Peg top",
+            "Boot cut",
+            "Bell bottom",
+            "Flare",
+            "Wide leg",
+            "Skinny"
+        ],
+        "fit": [
+            "Tight fit",
+            "Slim fit",
+            "Relaxed fit",
+            "Loose fit",
+            "Regular fit"
+        ],
+        "color": [
+            "Navy",
+            "Black",
+            "Beige",
+            "Khaki",
+            "Gray",
+            "Charcoal",
+            "Olive"
         ]
     },
     "Skirts": {
+        "garment_name": [
+            "Micro skirt",
+            "Leather skirt",
+            "Denim skirt",
+            "Balloon/bubble skirt",
+            "Culotte short skirt",
+            "Skort",
+            "Peplum skirt",
+            "Sheath skirt",
+            "pencil/tapered skirt",
+            "Circular skirt",
+            "Flared skirt",
+            "Full skirt",
+            "Yoke skirt",
+            "Cargo skirt",
+            "Ruffle skirt",
+            "Button-down skirt",
+            "Bell skirt",
+            "Draped skirt",
+            "Wrap skirt",
+            "Handkerchief skirt",
+            "Sunray pleat skirt",
+            "Knife pleat skirt",
+            "Box pleat skirt",
+            "High-low skirt",
+            "Tiered skirt",
+            "Asymmetric skirt",
+            "Midi skirt",
+            "Trumpet skirt",
+            "Slit skirt",
+            "Maxi skirt",
+            "Gathered skirt",
+            "Mini skirt",
+            "Straight skirt"
+        ],
         "fabric": [
-            "Denim", "Cotton", "Leather", "Silk", "Velvet", "Linen", "Jersey"
+            "Denim",
+            "Cotton",
+            "Leather",
+            "Silk",
+            "Velvet",
+            "Linen",
+            "Jersey"
         ],
         "silhouette": [
-            "A-line skirts", "Circle skirts", "Straight skirt", "Pencil skirts", "Gored skirt", "Bias-cut skirt", "Flared skirt",
-            "Fitted skirt", "Asymmetrical skirt", "Draped skirt", "Trumpet", "Mermaid"
+            "A-line skirts",
+            "Circle skirts",
+            "Straight skirt",
+            "Pencil skirts",
+            "Gored skirt",
+            "Bias-cut skirt",
+            "Flared skirt",
+            "Fitted skirt",
+            "Asymmetrical skirt",
+            "Draped skirt",
+            "Trumpet",
+            "Mermaid"
         ],
         "fit": [
-            "Tight fit", "Relaxed fit", "Regular fit", "Loose fit"
+            "Tight fit",
+            "Relaxed fit",
+            "Regular fit",
+            "Loose fit"
         ],
         "color": [
-            "Black", "White", "Red", "Navy", "Beige", "Grey", "Brown", "Green"
+            "Black",
+            "White",
+            "Red",
+            "Navy",
+            "Beige",
+            "Grey",
+            "Brown",
+            "Green"
         ]
     },
     "Outerwear": {
+        "garment_name": [
+            "Coat",
+            "Blazer",
+            "Jacket",
+            "Trench coat",
+            "Bomber jacket",
+            "Cardigan",
+            "Windbreaker",
+            "Vest",
+            "Cape",
+            "Puffer jacket",
+            "Bolero"
+        ],
         "fabric": [
-            "Wool", "Leather", "Polyester", "Denim", "Faux fur", "Corduroy", "Nylon", "Cashmere"
+            "Wool",
+            "Leather",
+            "Polyester",
+            "Denim",
+            "Faux fur",
+            "Corduroy",
+            "Nylon",
+            "Cashmere"
         ],
         "silhouette": [
-            "Straight-cut", "A-line", "Slim fit", "Natural fit", "Flare", "Fitted", "Fit-and-flare", "Cocoon"
+            "Straight-cut",
+            "A-line",
+            "Slim fit",
+            "Natural fit",
+            "Flare",
+            "Fitted",
+            "Fit-and-flare",
+            "Cocoon"
         ],
         "fit": [
-            "Tight fit", "Relaxed fit", "Oversized fit", "Tailored fit", "Regular fit"
+            "Tight fit",
+            "Relaxed fit",
+            "Oversized fit",
+            "Tailored fit",
+            "Regular fit"
         ],
         "color": [
-            "Black", "Beige", "Navy", "Grey", "Red", "Green", "Camel", "Charcoal"
+            "Black",
+            "Beige",
+            "Navy",
+            "Grey",
+            "Red",
+            "Green",
+            "Camel",
+            "Charcoal"
         ]
     }
 }
