@@ -14,6 +14,11 @@ export const uploadClothingItem = async (image) => {
   return await response.json();
 };
 
+  if (image) {
+    reader.readAsDataURL(image);  // Converts the image to base64
+  }
+};
+
 export const tagClothingImage = async (image) => {
   const formData = new FormData();
   formData.append("image", image);
