@@ -8,6 +8,7 @@ function App() {
   const [image, setImage] = useState(null);
   const [detectedItems, setDetectedItems] = useState({});
   const [recommendations, setRecommendations] = useState([]);
+  const [error, setError] = useState(null);
 
   const handleUpload = async () => {
     try {
@@ -20,6 +21,7 @@ function App() {
       setRecommendations(tagResponse.recommendations || []);
     } catch (error) {
       console.error('Error uploading or tagging clothing item:', error);
+      setError("Something went wrong while processing the image. Please try again.");
     }
   };
 
@@ -29,18 +31,21 @@ function App() {
 
       <ImageUpload setImage={setImage} />
 
-      <button
-        onClick={handleUpload}
-        className="bg-blue-500 text-white px-4 py-2 rounded shadow"
-      >
-        Submit
       </button>
 
-      {Object.keys(detectedItems).length > 0 && (
+      {error && (
+        <div className="mt-6 text-red-600 font-semibold">
+          <p>{error}</p>
+        </div>
+      )}
+
+      {detectedItems.length > 0 && (
         <DetectedTags detectedItems={detectedItems} />
       )}
 
-      {recommendations.length > 0 && <Recommendations recommendations={recommendations} />}
+      {recommendations.length > 0 && (
+        <Recommendations recommendations={recommendations} />
+      )}
     </div>
   );
 }
