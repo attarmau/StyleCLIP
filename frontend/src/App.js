@@ -31,6 +31,12 @@ function App() {
 
       <ImageUpload setImage={setImage} />
 
+      {/* Add a button for uploading the image */}
+      <button 
+        onClick={handleUpload} 
+        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+      >
+        Upload and Get Recommendations
       </button>
 
       {error && (
@@ -39,7 +45,7 @@ function App() {
         </div>
       )}
 
-      {detectedItems.length > 0 && (
+      {Object.keys(detectedItems).length > 0 && (
         <DetectedTags detectedItems={detectedItems} />
       )}
 
@@ -49,4 +55,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
