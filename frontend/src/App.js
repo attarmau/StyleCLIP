@@ -6,30 +6,20 @@ import Recommendations from './components/Recommendations';
 
 function App() {
   const [image, setImage] = useState(null);
-  const [detectedItems, setDetectedItems] = useState([]);
+  const [detectedItems, setDetectedItems] = useState({});
+  const [recommendations, setRecommendations] = useState([]);
 
   const handleUpload = async () => {
-    const reader = new FileReader();
-    reader.onloadend = async () => {
-      const base64Image = reader.result.split(',')[1];
+    try {
+      // Step 1: Upload the clothing item to the backend
+      const uploadResponse = await uploadClothingItem(image);
+      setDetectedItems(uploadResponse.tags || {});
 
-      const payload = {
-        filename: image.name,
-        image_base64: base64Image
-      };
-
-      const res = await fetch('http://localhost:8000/clothing/upload', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-
-      const data = await res.json();
-      setDetectedItems(data.tags || {});
-    };
-
-    if (image) {
-      reader.readAsDataURL(image);
+      // Step 2: Get recommendations from the backend
+      const tagResponse = await tagClothingImage(image);
+      setRecommendations(tagResponse.recommendations || []);
+    } catch (error) {
+      console.error('Error uploading or tagging clothing item:', error);
     }
   };
 
@@ -37,12 +27,8 @@ function App() {
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">
       <h1 className="text-2xl font-bold mb-4">Clothing Recommender</h1>
 
-      <input
-        type="file"
-        accept="image/*"
-        onChange={(e) => setImage(e.target.files[0])}
-        className="mb-4"
-      />
+      <ImageUpload setImage={setImage} />
+
       <button
         onClick={handleUpload}
         className="bg-blue-500 text-white px-4 py-2 rounded shadow"
@@ -50,20 +36,12 @@ function App() {
         Submit
       </button>
 
-      {detectedItems && (
-        <div className="mt-6 w-full max-w-md bg-white p-4 rounded shadow">
-          <h2 className="text-xl font-semibold mb-2">Detected Tags:</h2>
-          <ul className="list-disc ml-6 space-y-1">
-            {Object.entries(detectedItems).map(([key, value]) => (
-              <li key={key}>
-                <strong>{key}:</strong> {value}
-              </li>
-            ))}
-          </ul>
-        </div>
+      {Object.keys(detectedItems).length > 0 && (
+        <DetectedTags detectedItems={detectedItems} />
       )}
+
+      {recommendations.length > 0 && <Recommendations recommendations={recommendations} />}
     </div>
   );
 }
-
 export default App;
