@@ -70,7 +70,7 @@ venv\Scripts\activate     # On Windows
 ```
 pip install -r requirements.txt
 ```
-### Step 4: Start the FastAPI Server
+### Step 4: Start the FastAPI Server (Backend)
 ```
 uvicorn backend.app.server:app --reload
 ```
@@ -80,7 +80,23 @@ Database connected
 INFO:     Application startup complete.
 ```
 <img width="750" alt="Screenshot 2025-04-25 at 1 15 45 AM" src="https://github.com/user-attachments/assets/7f3fc403-fb33-4107-a00c-61796a48ecec" />
+### Step 5: Install Dependencies
+Database connected
+INFO:     Application startup complete.
+```
+npm install
+```
+### Step 6: Start the Development Server (Frontend)
+```
+npm start
+```
 
+### 📌 Quick Tips
+Visit the app at: [http://localhost:3000/](http://localhost:3000/)
+### 📌 Sample Components for UI
+1. Image upload
+2. Submit button
+3. Display clothing tags + recommendations
 
 What’s completed so far:
 1. FastAPI server is up and running (24 Apr)
