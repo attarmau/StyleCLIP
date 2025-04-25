@@ -1,8 +1,11 @@
 import React from 'react';
 
-function ImageUpload({ setImage }) {
+const ImageUpload = ({ setImage }) => {
   const handleImageChange = (e) => {
-    setImage(e.target.files[0]);
+    const file = e.target.files[0];
+    if (file) {
+      setImage(file);
+    }
   };
 
   return (
@@ -11,10 +14,10 @@ function ImageUpload({ setImage }) {
         type="file"
         accept="image/*"
         onChange={handleImageChange}
-        className="mb-4"
+        className="block text-sm text-gray-500"
       />
     </div>
   );
-}
+};
 
 export default ImageUpload;
