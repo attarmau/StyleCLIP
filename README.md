@@ -80,6 +80,7 @@ Database connected
 INFO:     Application startup complete.
 ```
 <img width="750" alt="Screenshot 2025-04-25 at 1 15 45 AM" src="https://github.com/user-attachments/assets/7f3fc403-fb33-4107-a00c-61796a48ecec" />
+
 ### Step 5: Install Dependencies
 Database connected
 INFO:     Application startup complete.
@@ -90,6 +91,9 @@ npm install
 ```
 npm start
 ```
+Once the server is running, you should see the following message in the console:
+<img width="372" alt="Screenshot 2025-04-25 at 9 08 50 PM" src="https://github.com/user-attachments/assets/794a6dba-9fbb-40f1-9e57-c5c2e2af1013" />
+
 
 ### 📌 Quick Tips
 Visit the app at: [http://localhost:3000/](http://localhost:3000/)
