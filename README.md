@@ -105,7 +105,7 @@ Visit the app at: [http://localhost:3000/](http://localhost:3000/)
 2. Submit button
 3. Display clothing tags + recommendations
 
-What’s completed so far:
+# What’s completed so far:
 1. FastAPI server is up and running (24 Apr)
 2. Database connection is set up (24 Apr)
 3. Backend architecture is functional (24 Apr)
