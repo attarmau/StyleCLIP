@@ -1,17 +1,27 @@
+const convertImageToBase64 = (image) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      resolve(reader.result.split(',')[1]);
+    };
+    reader.onerror = (error) => reject(error);
+    reader.readAsDataURL(image);
+  });
+};
+
 export const uploadClothingItem = async (image) => {
-  const reader = new FileReader();
-  reader.onloadend = async () => {
-    const base64Image = reader.result.split(',')[1];  // Get base64 part of the image
+  try {
+    const base64Image = await convertImageToBase64(image);
 
     const payload = {
       filename: image.name,
-      image_base64: base64Image
+      image_base64: base64Image,
     };
 
     const response = await fetch("http://localhost:8000/clothing/upload", {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(payload),
     });
@@ -21,26 +31,24 @@ export const uploadClothingItem = async (image) => {
     }
 
     return await response.json();
-  };
-
-  if (image) {
-    reader.readAsDataURL(image);  // Converts the image to base64
+  } catch (error) {
+    console.error("Error uploading clothing item:", error);
+    throw error;
   }
 };
 
 export const tagClothingImage = async (image) => {
-  const reader = new FileReader();
-  reader.onloadend = async () => {
-    const base64Image = reader.result.split(',')[1];  // Get base64 part of the image
+  try {
+    const base64Image = await convertImageToBase64(image);
 
     const payload = {
-      image_base64: base64Image
+      image_base64: base64Image,
     };
 
     const response = await fetch("http://localhost:8000/clothing/tag", {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(payload),
     });
@@ -50,9 +58,8 @@ export const tagClothingImage = async (image) => {
     }
 
     return await response.json();
-  };
-
-  if (image) {
-    reader.readAsDataURL(image);  // Converts the image to base64
+  } catch (error) {
+    console.error("Error tagging clothing image:", error);
+    throw error;
   }
 };
