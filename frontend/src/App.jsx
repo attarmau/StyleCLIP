@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 function App() {
   const [image, setImage] = useState(null);
-  const [tags, setTags] = useState([]);
+  const [detectedItems, setDetectedItems] = useState([]);
   const [recommendations, setRecommendations] = useState([]);
 
   const handleUpload = async () => {
