@@ -93,7 +93,7 @@ npm install
 ```
 npm start
 ```
-Once the server is running, you should see the following message in the console and bring you to web page: [http://localhost:3000/](http://localhost:3000/)
+Once running, the server logs a confirmation and opens the app in your browser: [http://localhost:3000/](http://localhost:3000/)
 
 <img width="372" alt="Screenshot 2025-04-25 at 9 08 50 PM" src="https://github.com/user-attachments/assets/794a6dba-9fbb-40f1-9e57-c5c2e2af1013" />
 
