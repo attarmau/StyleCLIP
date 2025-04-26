@@ -93,13 +93,10 @@ npm install
 ```
 npm start
 ```
-Once the server is running, you should see the following message in the console:
+Once the server is running, you should see the following message in the console and bring you to web page: [http://localhost:3000/](http://localhost:3000/)
 
 <img width="372" alt="Screenshot 2025-04-25 at 9 08 50 PM" src="https://github.com/user-attachments/assets/794a6dba-9fbb-40f1-9e57-c5c2e2af1013" />
 
-
-### 📌 Quick Tips
-Visit the app at: [http://localhost:3000/](http://localhost:3000/)
 ### 📌 Sample Components for UI
 1. Image upload
 2. Submit button
