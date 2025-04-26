@@ -4,7 +4,8 @@ This is a CLIP-Based Fashion Recommender with MCP.
 # Mockup
 A user uploads a clothing image → YOLO detects clothing → CLIP encodes → Recommend similar
 
-<img width="478" alt="Screenshot 2025-04-25 at 8 58 41 PM" src="https://github.com/user-attachments/assets/81714a44-614d-4cc1-8b95-16de984c29d7" />
+<img width="463" alt="Screenshot 2025-04-26 at 10 26 13 AM" src="https://github.com/user-attachments/assets/93c0a75b-4ed1-4fa1-b25d-5137b8eb6af0" />
+
 
 # Folder Structure
 ```
