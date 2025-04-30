@@ -1,69 +1,19 @@
 # Feel free to adjust this mapping
 garment_types = {
     "Tops": {
-        "garment_name": [
-            "Cami Top",
-            "T-shirt",
-            "Tank top",
-            "Crop top",
-            "Hoodie",
-            "Blouse",
-            "Shirt",
-            "Polo shirt",
-            "Bodysuit",
-            "Knit top",
-            "Wrap top",
-            "Vest top",
-            "Bandeau top",
-            "Tunic top",
-            "Cold-shoulder top",
-            "Off-the-shoulder top",
-            "Sweatshirt",
-            "Drapped t-shirt",
-            "One-shoulder top",
-            "Henley shirt",
-            "Wrap Shirt",
-            "Tie Shirt",
-            "Drawstring Shirt",
-            "Trapeze Shirt",
-            "Baseball Shirt",
-            "Camp Shirt",
-            "Tie Blouse",
-            "Drawstring blouse",
-            "Peplum blouse",
-            "Tube top",
-            "Halterneck top",
-            "Wrap Top",
-            "Peasant top",
-            "Pleated top",
-            "Smocked top",
-            "Cardigan",
-            "Bralette",
-            "Baby tee"
+        "garmentName": [
+            "Cami Top", "T-shirt", "Tank top", "Crop top", "Hoodie", "Blouse", "Button Shirt", "Polo shirt",
+            "Bodysuit", "Knit top", "Bustier", "Vest top", "Bandeau top", "Tunic top", "Cold-shoulder top",
+            "Off-the-shoulder top", "Sweatshirt", "Draped t-shirt", "One-shoulder top", "Henley shirt",
+            "Wrap Shirt", "Tie Shirt", "Drawstring Shirt", "Trapeze Shirt", "Baseball Shirt", "Camp Shirt",
+            "Tie Blouse", "Drawstring blouse", "Peplum Top", "Tube top", "Halterneck top", "Wrap Top",
+            "Peasant top", "Pleated top", "Corset top", "Babydoll top", "Smocked top", "Cardigan", "Bralette"
         ],
-        "fabric": [
-            "Dri-FIT",
-            "Tulle",
-            "Suede",
-            "Canvas",
-            "Faux fur",
-            "Fleece",
-            "Brocade",
-            "Neoprene",
-            "Waterproof fabric",
-            "Windbreaker fabric",
-            "Thermal fabric",
-            "Activewear fabric",
-            "Metallic fabric",
-            "Knit",
-            "Crochet knit",
-            "Embellished fabric",
-            "Eyelet fabric",
-            "Ripstop fabric",
-            "Textured fabric",
-            "Seersucker",
-            "Embroidered Mesh",
-            "Ribbed Knit"
+        "fabricName": [
+            "Denim","Plain woven","Leather","Chiffon","Chambray","Tweed","Poplin","Jersey knit","Twill","Nylon","Polyester","Satin","Velvet","Corduroy",
+            "Georgette","Crepe","Garbadine","Flannel","Taffeta","Organza","Jacquard","Cupro","Lace","Viscose","Sequin","Mesh","Spandex","Dri-FIT","Tulle",
+            "Suede","Canvas","Faux fur","Fleece","Brocade","Neoprene","Metallic fabric","Knit","Crochet knit","Ribbed knit","Embellished fabric", "Eyelet fabric",
+            "Ripstop fabric","Textured fabric","Seersucker","Embroidered Mesh"
         ],
         "silhouette": [
             "Straight silhouette",
@@ -88,65 +38,43 @@ garment_types = {
             "Structured fit"
         ],
         "color": [
-            "White",
-            "Ivory",
-            "Off-white",
-            "Bone",
-            "Black",
-            "Black melange",
-            "Charcoal",
-            "Grey",
-            "Heather gray",
-            "Light grey",
-            "Graphite grey",
-            "Gunmetal"
+            "light red", "washed red", "red", "dark red",
+            "light orange", "washed orange", "orange", "dark orange",
+            "light yellow", "washed yellow", "yellow", "dark yellow",
+            "light green", "washed green", "green", "dark green",
+            "light blue", "washed blue", "blue", "dark blue",
+            "light purple", "washed purple", "purple", "dark purple",
+            "light pink", "washed pink", "pink", "dark pink",
+            "light brown", "washed brown", "brown", "dark brown",
+            "light grey", "washed grey", "grey", "dark grey",
+            "washed black", "black",
+            "washed white", "white",
+            "light beige", "washed beige", "beige", "dark beige",
+            "light teal", "washed teal", "teal", "dark teal",
+            "light olive", "washed olive", "olive", "dark olive",
+            "light turquoise", "washed turquoise", "turquoise", "dark turquoise",
+            "light coral", "washed coral", "coral", "dark coral",
+            "light peach", "washed peach", "peach", "dark peach",
+            "light mint", "washed mint", "mint", "dark mint",
+            "metallic gold", "metallic silver", "metallic bronze",
+            "neon green", "neon pink", "neon yellow", "neon orange"
         ]
     },
-    "Dress": {
-        "garment_name": [
-            "A-line dress",
-            "Shift dress",
-            "Wrap dress",
-            "Cheongsam",
-            "Sailor dress",
-            "Tulip dress",
-            "Bustier dress",
-            "Sundress",
-            "Peasant dress",
-            "Pleated dress",
-            "Bubble/balloon dress",
-            "Cape dress",
-            "Corset dress",
-            "Off-shoulder dress",
-            "One-shoulder dress",
-            "Babydoll dress",
-            "Handkerchief hem dress",
-            "Peplum dress",
-            "tube/strapless dress",
-            "Tiered dress",
-            "Dropped waist dress",
-            "Bodycon dress",
-            "Trapeze dress",
-            "Flared dress",
-            "Shirt dress",
-            "Polo shirt dress",
-            "Bias dress",
-            "Slip dress",
-            "Asymmetric dress",
-            "Straight dress",
-            "Column dress",
-            "Tennis dress",
-            "Tank dress"
+    "Pants": {
+        "garmentName": [
+            "Skinny jeans", "Tapered jeans", "Baggy jeans", "Wide leg jeans", "Flared bottom jeans",
+            "Cargo jeans", "Button fly jeans", "Jeggings", "Ripped jeans", "Hot pants", "Shorts",
+            "Cargo shorts", "Preppy shorts", "Baggy bermudas", "Straight pants", "Slim-fit pants",
+            "Bell-bottom pants", "Tailored pants", "Tuxedo pants", "Palazzo pants", "Cargo pants",
+            "Zip-off convertible pants", "Pajama pants", "High-waisted pants", "Baggy pants",
+            "Tapered baggy pants", "Leggings", "Yoga pants", "Sweatpants", "Wide leg pants",
+            "Mom jeans", "Joggers"
         ],
-        "fabric": [
-            "Cotton",
-            "Linen",
-            "Silk",
-            "Velvet",
-            "Jersey",
-            "Satin",
-            "Chiffon",
-            "Organza"
+        "fabricName": [
+            "Denim","Plain woven","Leather","Chiffon","Chambray","Tweed","Poplin","Jersey knit","Twill","Nylon","Polyester","Satin","Velvet","Corduroy",
+            "Georgette","Crepe","Garbadine","Flannel","Taffeta","Organza","Jacquard","Cupro","Lace","Viscose","Sequin","Mesh","Spandex","Dri-FIT","Tulle",
+            "Suede","Canvas","Faux fur","Fleece","Brocade","Neoprene","Metallic fabric","Knit","Crochet knit","Ribbed knit","Embellished fabric", "Eyelet fabric",
+            "Ripstop fabric","Textured fabric","Seersucker","Embroidered Mesh"
         ],
         "silhouette": [
             "A-line",
@@ -174,35 +102,100 @@ garment_types = {
             "Relaxed fit",
             "Loose fit",
             "Oversized fit",
-            "Tailored fit"
+            "Tailored fit",
+            "Softly tailored fit",
+            "Structured fit"
         ],
         "color": [
-            "Red",
-            "Pink",
-            "Purple",
-            "Blue",
-            "Green",
-            "Yellow",
-            "Orange",
-            "Black",
-            "White",
-            "Ivory"
+            "light red", "washed red", "red", "dark red",
+            "light orange", "washed orange", "orange", "dark orange",
+            "light yellow", "washed yellow", "yellow", "dark yellow",
+            "light green", "washed green", "green", "dark green",
+            "light blue", "washed blue", "blue", "dark blue",
+            "light purple", "washed purple", "purple", "dark purple",
+            "light pink", "washed pink", "pink", "dark pink",
+            "light brown", "washed brown", "brown", "dark brown",
+            "light grey", "washed grey", "grey", "dark grey",
+            "washed black", "black",
+            "washed white", "white",
+            "light beige", "washed beige", "beige", "dark beige",
+            "light teal", "washed teal", "teal", "dark teal",
+            "light olive", "washed olive", "olive", "dark olive",
+            "light turquoise", "washed turquoise", "turquoise", "dark turquoise",
+            "light coral", "washed coral", "coral", "dark coral",
+            "light peach", "washed peach", "peach", "dark peach",
+            "light mint", "washed mint", "mint", "dark mint",
+            "metallic gold", "metallic silver", "metallic bronze",
+            "neon green", "neon pink", "neon yellow", "neon orange"
+        ]
+    },
+    "Dress": {
+        "garmentName": [
+            "A-line dress", "Shift dress", "Wrap dress", "Cheongsam", "Sailor dress", "Tulip dress",
+            "Bustier dress", "Sundress", "Peasant dress", "Pleated dress", "Bubble dress", "Cape dress",
+            "Corset dress", "Off-shoulder dress", "One-shoulder dress", "Babydoll dress",
+            "Handkerchief hem dress", "Peplum dress", "Tube dress", "Tiered dress", "Dropped waist dress",
+            "Bodycon dress", "Trapeze dress", "Flared dress", "Shirt dress", "Polo shirt dress",
+            "Basic dress", "Pencil dress", "Sheath dress", "Bias dress", "Cami dress", "Slip dress",
+            "Asymmetric dress", "Column dress", "Tank dress", "Tennis dress"
+        ],
+        "fabricName": [
+            "Denim","Plain woven","Leather","Chiffon","Chambray","Tweed","Poplin","Jersey knit","Twill","Nylon","Polyester","Satin","Velvet","Corduroy",
+            "Georgette","Crepe","Garbadine","Flannel","Taffeta","Organza","Jacquard","Cupro","Lace","Viscose","Sequin","Mesh","Spandex","Dri-FIT","Tulle",
+            "Suede","Canvas","Faux fur","Fleece","Brocade","Neoprene","Metallic fabric","Knit","Crochet knit","Ribbed knit","Embellished fabric", "Eyelet fabric",
+            "Ripstop fabric","Textured fabric","Seersucker","Embroidered Mesh"
+        ],
+        "silhouette": [
+            "A-line", "H-line", "I-line", "V-line", "X-line", "Y-line", "Tent shape",
+            "Natural shape", "Sheath", "Fit-and-flare", "Slim", "Hourglass", "Asymmetric", "Princess line", "Empire line",
+            "Balloon", "Shift"
+        ],
+        "fit": [
+            "Tight fit",
+            "Slim fit",
+            "Regular fit",
+            "Relaxed fit",
+            "Loose fit",
+            "Oversized fit",
+            "Tailored fit",
+            "Softly tailored fit",
+            "Structured fit"
+        ],
+        "color": [
+            "light red", "washed red", "red", "dark red",
+            "light orange", "washed orange", "orange", "dark orange",
+            "light yellow", "washed yellow", "yellow", "dark yellow",
+            "light green", "washed green", "green", "dark green",
+            "light blue", "washed blue", "blue", "dark blue",
+            "light purple", "washed purple", "purple", "dark purple",
+            "light pink", "washed pink", "pink", "dark pink",
+            "light brown", "washed brown", "brown", "dark brown",
+            "light grey", "washed grey", "grey", "dark grey",
+            "washed black", "black",
+            "washed white", "white",
+            "light beige", "washed beige", "beige", "dark beige",
+            "light teal", "washed teal", "teal", "dark teal",
+            "light olive", "washed olive", "olive", "dark olive",
+            "light turquoise", "washed turquoise", "turquoise", "dark turquoise",
+            "light coral", "washed coral", "coral", "dark coral",
+            "light peach", "washed peach", "peach", "dark peach",
+            "light mint", "washed mint", "mint", "dark mint",
+            "metallic gold", "metallic silver", "metallic bronze",
+            "neon green", "neon pink", "neon yellow", "neon orange"
         ]
     },
     "One-piece": {
-        "garment_name": [
-            "Romper",
-            "Jumpsuit",
-            "Playsuit (longer length than romper)"
-        ],
-        "fabric": [
-            "Neoprene",
-            "Spandex",
-            "Jersey",
-            "Polyester",
-            "Lycra"
+        "garmentName":["Romper","Jumpsuit","Playsuit"],
+        "fabricName": [
+            "Denim","Plain woven","Leather","Chiffon","Chambray","Tweed","Poplin","Jersey knit","Twill","Nylon","Polyester","Satin","Velvet","Corduroy",
+            "Georgette","Crepe","Garbadine","Flannel","Taffeta","Organza","Jacquard","Cupro","Lace","Viscose","Sequin","Mesh","Spandex","Dri-FIT","Tulle",
+            "Suede","Canvas","Faux fur","Fleece","Brocade","Neoprene","Metallic fabric","Knit","Crochet knit","Ribbed knit","Embellished fabric", "Eyelet fabric",
+            "Ripstop fabric","Textured fabric","Seersucker","Embroidered Mesh"
         ],
         "silhouette": [
+            "Straight-cut", "Wide-leg", "Flare", "Bell bottom", "Tapered", "Slim-fit", "Skinny"
+        ],
+        "bottomSilhouette":[
             "Straight-cut",
             "Wide-leg",
             "Flare",
@@ -214,212 +207,136 @@ garment_types = {
         "fit": [
             "Tight fit",
             "Slim fit",
-            "Relaxed fit"
-        ],
-        "color": [
-            "Black",
-            "White",
-            "Navy",
-            "Red",
-            "Green"
-        ]
-    },
-    "Pants": {
-        "garment_name": [
-            "Skinny jeans",
-            "Tapered jeans",
-            "Baggy jeans",
-            "Wide leg jeans",
-            "Flared bottom jeans",
-            "Cargo jeans",
-            "Button fly jeans",
-            "Jeggings",
-            "Ripped jeans",
-            "Hot pants",
-            "Shorts",
-            "Cargo shorts",
-            "Preppy shorts",
-            "Baggy bermudas",
-            "Straight pants",
-            "Slim-fit pants",
-            "Bell-bottom pants",
-            "Tailored pants",
-            "Tuxedo pants",
-            "Palazzo Pants",
-            "Cargo pants",
-            "Zip-off Convertable pants",
-            "Pajama Pants",
-            "High-waisted pants",
-            "Baggy pants",
-            "Tapered baggy pants",
-            "Leggings",
-            "Yoga pants",
-            "Sweatpants",
-            "Wide leg pants",
-            "Mom jeans",
-            "Joggers"
-        ],
-        "fabric": [
-            "Denim",
-            "Cotton",
-            "Polyester",
-            "Linen",
-            "Corduroy"
-        ],
-        "silhouette": [
-            "Straight",
-            "Slim fit",
-            "Baggy",
-            "Peg top",
-            "Boot cut",
-            "Bell bottom",
-            "Flare",
-            "Wide leg",
-            "Skinny"
-        ],
-        "fit": [
-            "Tight fit",
-            "Slim fit",
+            "Regular fit",
             "Relaxed fit",
             "Loose fit",
-            "Regular fit"
+            "Oversized fit",
+            "Tailored fit",
+            "Softly tailored fit",
+            "Structured fit"
         ],
         "color": [
-            "Navy",
-            "Black",
-            "Beige",
-            "Khaki",
-            "Gray",
-            "Charcoal",
-            "Olive"
+            "light red", "washed red", "red", "dark red",
+            "light orange", "washed orange", "orange", "dark orange",
+            "light yellow", "washed yellow", "yellow", "dark yellow",
+            "light green", "washed green", "green", "dark green",
+            "light blue", "washed blue", "blue", "dark blue",
+            "light purple", "washed purple", "purple", "dark purple",
+            "light pink", "washed pink", "pink", "dark pink",
+            "light brown", "washed brown", "brown", "dark brown",
+            "light grey", "washed grey", "grey", "dark grey",
+            "washed black", "black",
+            "washed white", "white",
+            "light beige", "washed beige", "beige", "dark beige",
+            "light teal", "washed teal", "teal", "dark teal",
+            "light olive", "washed olive", "olive", "dark olive",
+            "light turquoise", "washed turquoise", "turquoise", "dark turquoise",
+            "light coral", "washed coral", "coral", "dark coral",
+            "light peach", "washed peach", "peach", "dark peach",
+            "light mint", "washed mint", "mint", "dark mint",
+            "metallic gold", "metallic silver", "metallic bronze",
+            "neon green", "neon pink", "neon yellow", "neon orange"
         ]
     },
     "Skirts": {
-        "garment_name": [
-            "Micro skirt",
-            "Leather skirt",
-            "Denim skirt",
-            "Balloon/bubble skirt",
-            "Culotte short skirt",
-            "Skort",
-            "Peplum skirt",
-            "Sheath skirt",
-            "pencil/tapered skirt",
-            "Circular skirt",
-            "Flared skirt",
-            "Full skirt",
-            "Yoke skirt",
-            "Cargo skirt",
-            "Ruffle skirt",
-            "Button-down skirt",
-            "Bell skirt",
-            "Draped skirt",
-            "Wrap skirt",
-            "Handkerchief skirt",
-            "Sunray pleat skirt",
-            "Knife pleat skirt",
-            "Box pleat skirt",
-            "High-low skirt",
-            "Tiered skirt",
-            "Asymmetric skirt",
-            "Midi skirt",
-            "Trumpet skirt",
-            "Slit skirt",
-            "Maxi skirt",
-            "Gathered skirt",
-            "Mini skirt",
-            "Straight skirt"
+        "garmentName": [
+            "Micro skirt", "Leather skirt", "Denim skirt", "Balloon skirt", "Culotte short skirt", "Skort",
+            "Peplum skirt", "Sheath skirt", "Pencil skirt", "Circular skirt", "Flared skirt", "Full skirt",
+            "Yoke skirt", "Cargo skirt", "Ruffle skirt", "Button-down skirt", "Bell skirt", "Draped skirt",
+            "Wrap skirt", "Handkerchief skirt", "Sunray pleat skirt", "Knife pleat skirt", "Box pleat skirt",
+            "High-low skirt", "Tiered skirt", "Asymmetric skirt", "Midi skirt", "Trumpet skirt", "Slit skirt",
+            "Maxi skirt", "Gathered skirt", "Mini skirt", "Straight skirt"
         ],
-        "fabric": [
-            "Denim",
-            "Cotton",
-            "Leather",
-            "Silk",
-            "Velvet",
-            "Linen",
-            "Jersey"
+        "fabricName": [
+            "Denim","Plain woven","Leather","Chiffon","Chambray","Tweed","Poplin","Jersey knit","Twill","Nylon","Polyester","Satin","Velvet","Corduroy",
+            "Georgette","Crepe","Garbadine","Flannel","Taffeta","Organza","Jacquard","Cupro","Lace","Viscose","Sequin","Mesh","Spandex","Dri-FIT","Tulle",
+            "Suede","Canvas","Faux fur","Fleece","Brocade","Neoprene","Metallic fabric","Knit","Crochet knit","Ribbed knit","Embellished fabric", "Eyelet fabric",
+            "Ripstop fabric","Textured fabric","Seersucker","Embroidered Mesh"
         ],
-        "silhouette": [
-            "A-line skirts",
-            "Circle skirts",
-            "Straight skirt",
-            "Pencil skirts",
-            "Gored skirt",
-            "Bias-cut skirt",
-            "Flared skirt",
-            "Fitted skirt",
-            "Asymmetrical skirt",
-            "Draped skirt",
-            "Trumpet",
-            "Mermaid"
+        "silhouette" : [
+            "A-line skirts", "Circle skirts", "Straight skirt", "Pencil skirt",
+            "Gored skirt", "Bias-cut skirt", "Flared skirt", "Fitted skirt",
+            "Asymmetrical skirt", "Draped skirt", "A-line", "Flare", "Straight",
+            "Tapered", "Trumpet", "Mermaid", "Asymmetrical", "Draped", "Circle"
         ],
         "fit": [
             "Tight fit",
-            "Relaxed fit",
+            "Slim fit",
             "Regular fit",
-            "Loose fit"
+            "Relaxed fit",
+            "Loose fit",
+            "Oversized fit",
+            "Tailored fit",
+            "Softly tailored fit",
+            "Structured fit"
         ],
         "color": [
-            "Black",
-            "White",
-            "Red",
-            "Navy",
-            "Beige",
-            "Grey",
-            "Brown",
-            "Green"
+            "light red", "washed red", "red", "dark red",
+            "light orange", "washed orange", "orange", "dark orange",
+            "light yellow", "washed yellow", "yellow", "dark yellow",
+            "light green", "washed green", "green", "dark green",
+            "light blue", "washed blue", "blue", "dark blue",
+            "light purple", "washed purple", "purple", "dark purple",
+            "light pink", "washed pink", "pink", "dark pink",
+            "light brown", "washed brown", "brown", "dark brown",
+            "light grey", "washed grey", "grey", "dark grey",
+            "washed black", "black",
+            "washed white", "white",
+            "light beige", "washed beige", "beige", "dark beige",
+            "light teal", "washed teal", "teal", "dark teal",
+            "light olive", "washed olive", "olive", "dark olive",
+            "light turquoise", "washed turquoise", "turquoise", "dark turquoise",
+            "light coral", "washed coral", "coral", "dark coral",
+            "light peach", "washed peach", "peach", "dark peach",
+            "light mint", "washed mint", "mint", "dark mint",
+            "metallic gold", "metallic silver", "metallic bronze",
+            "neon green", "neon pink", "neon yellow", "neon orange"
         ]
     },
     "Outerwear": {
-        "garment_name": [
-            "Coat",
-            "Blazer",
-            "Jacket",
-            "Trench coat",
-            "Bomber jacket",
-            "Cardigan",
-            "Windbreaker",
-            "Vest",
-            "Cape",
-            "Puffer jacket",
-            "Bolero"
+        "fabricName": [
+            "Denim","Plain woven","Leather","Chiffon","Chambray","Tweed","Poplin","Jersey knit","Twill","Nylon","Polyester","Satin","Velvet","Corduroy",
+            "Georgette","Crepe","Garbadine","Flannel","Taffeta","Organza","Jacquard","Cupro","Lace","Viscose","Sequin","Mesh","Spandex","Dri-FIT","Tulle",
+            "Suede","Canvas","Faux fur","Fleece","Brocade","Neoprene","Metallic fabric","Knit","Crochet knit","Ribbed knit","Embellished fabric", "Eyelet fabric",
+            "Ripstop fabric","Textured fabric","Seersucker","Embroidered Mesh"
         ],
-        "fabric": [
-            "Wool",
-            "Leather",
-            "Polyester",
-            "Denim",
-            "Faux fur",
-            "Corduroy",
-            "Nylon",
-            "Cashmere"
-        ],
-        "silhouette": [
-            "Straight-cut",
-            "A-line",
-            "Slim fit",
-            "Natural fit",
-            "Flare",
-            "Fitted",
-            "Fit-and-flare",
-            "Cocoon"
+        "silhouette" : [
+            "A-line skirts", "Circle skirts", "Straight skirt", "Pencil skirt",
+            "Gored skirt", "Bias-cut skirt", "Flared skirt", "Fitted skirt",
+            "Asymmetrical skirt", "Draped skirt", "A-line", "Flare", "Straight",
+            "Tapered", "Trumpet", "Mermaid", "Asymmetrical", "Draped", "Circle"
         ],
         "fit": [
-            "Tight fit",
-            "Relaxed fit",
-            "Oversized fit",
-            "Tailored fit",
-            "Regular fit"
+            "Straight-cut"
+            "A-line"
+            "Slim fit"
+            "Natural fit"
+            "Flare"
+            "Fitted"
+            "Fit-and-flare"
+            "Cocoon"
         ],
         "color": [
-            "Black",
-            "Beige",
-            "Navy",
-            "Grey",
-            "Red",
-            "Green",
-            "Camel",
-            "Charcoal"
+            "light red", "washed red", "red", "dark red",
+            "light orange", "washed orange", "orange", "dark orange",
+            "light yellow", "washed yellow", "yellow", "dark yellow",
+            "light green", "washed green", "green", "dark green",
+            "light blue", "washed blue", "blue", "dark blue",
+            "light purple", "washed purple", "purple", "dark purple",
+            "light pink", "washed pink", "pink", "dark pink",
+            "light brown", "washed brown", "brown", "dark brown",
+            "light grey", "washed grey", "grey", "dark grey",
+            "washed black", "black",
+            "washed white", "white",
+            "light beige", "washed beige", "beige", "dark beige",
+            "light teal", "washed teal", "teal", "dark teal",
+            "light olive", "washed olive", "olive", "dark olive",
+            "light turquoise", "washed turquoise", "turquoise", "dark turquoise",
+            "light coral", "washed coral", "coral", "dark coral",
+            "light peach", "washed peach", "peach", "dark peach",
+            "light mint", "washed mint", "mint", "dark mint",
+            "metallic gold", "metallic silver", "metallic bronze",
+            "neon green", "neon pink", "neon yellow", "neon orange"
         ]
     }
 }
