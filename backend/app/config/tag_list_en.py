@@ -1,6 +1,14 @@
 # Feel free to adjust this mapping
 garment_types = {
     "Tops": {
+        "garmentName": [
+            "Cami Top", "T-shirt", "Tank top", "Crop top", "Hoodie", "Blouse", "Button Shirt", "Polo shirt",
+            "Bodysuit", "Knit top", "Bustier", "Vest top", "Bandeau top", "Tunic top", "Cold-shoulder top",
+            "Off-the-shoulder top", "Sweatshirt", "Draped t-shirt", "One-shoulder top", "Henley shirt",
+            "Wrap Shirt", "Tie Shirt", "Drawstring Shirt", "Trapeze Shirt", "Baseball Shirt", "Camp Shirt",
+            "Tie Blouse", "Drawstring blouse", "Peplum Top", "Tube top", "Halterneck top", "Wrap Top",
+            "Peasant top", "Pleated top", "Corset top", "Babydoll top", "Smocked top", "Cardigan", "Bralette"
+        ],
         "fabricName": [
             "Denim","Plain woven","Leather","Chiffon","Chambray","Tweed","Poplin","Jersey knit","Twill","Nylon","Polyester","Satin","Velvet","Corduroy",
             "Georgette","Crepe","Garbadine","Flannel","Taffeta","Organza","Jacquard","Cupro","Lace","Viscose","Sequin","Mesh","Spandex","Dri-FIT","Tulle",
@@ -53,6 +61,15 @@ garment_types = {
         ]
     },
     "Pants": {
+        "garmentName": [
+            "Skinny jeans", "Tapered jeans", "Baggy jeans", "Wide leg jeans", "Flared bottom jeans",
+            "Cargo jeans", "Button fly jeans", "Jeggings", "Ripped jeans", "Hot pants", "Shorts",
+            "Cargo shorts", "Preppy shorts", "Baggy bermudas", "Straight pants", "Slim-fit pants",
+            "Bell-bottom pants", "Tailored pants", "Tuxedo pants", "Palazzo pants", "Cargo pants",
+            "Zip-off convertible pants", "Pajama pants", "High-waisted pants", "Baggy pants",
+            "Tapered baggy pants", "Leggings", "Yoga pants", "Sweatpants", "Wide leg pants",
+            "Mom jeans", "Joggers"
+        ],
         "fabricName": [
             "Denim","Plain woven","Leather","Chiffon","Chambray","Tweed","Poplin","Jersey knit","Twill","Nylon","Polyester","Satin","Velvet","Corduroy",
             "Georgette","Crepe","Garbadine","Flannel","Taffeta","Organza","Jacquard","Cupro","Lace","Viscose","Sequin","Mesh","Spandex","Dri-FIT","Tulle",
@@ -113,6 +130,15 @@ garment_types = {
         ]
     },
     "Dress": {
+        "garmentName": [
+            "A-line dress", "Shift dress", "Wrap dress", "Cheongsam", "Sailor dress", "Tulip dress",
+            "Bustier dress", "Sundress", "Peasant dress", "Pleated dress", "Bubble dress", "Cape dress",
+            "Corset dress", "Off-shoulder dress", "One-shoulder dress", "Babydoll dress",
+            "Handkerchief hem dress", "Peplum dress", "Tube dress", "Tiered dress", "Dropped waist dress",
+            "Bodycon dress", "Trapeze dress", "Flared dress", "Shirt dress", "Polo shirt dress",
+            "Basic dress", "Pencil dress", "Sheath dress", "Bias dress", "Cami dress", "Slip dress",
+            "Asymmetric dress", "Column dress", "Tank dress", "Tennis dress"
+        ],
         "fabricName": [
             "Denim","Plain woven","Leather","Chiffon","Chambray","Tweed","Poplin","Jersey knit","Twill","Nylon","Polyester","Satin","Velvet","Corduroy",
             "Georgette","Crepe","Garbadine","Flannel","Taffeta","Organza","Jacquard","Cupro","Lace","Viscose","Sequin","Mesh","Spandex","Dri-FIT","Tulle",
@@ -159,6 +185,7 @@ garment_types = {
         ]
     },
     "One-piece": {
+        "garmentName":["Romper","Jumpsuit","Playsuit"],
         "fabricName": [
             "Denim","Plain woven","Leather","Chiffon","Chambray","Tweed","Poplin","Jersey knit","Twill","Nylon","Polyester","Satin","Velvet","Corduroy",
             "Georgette","Crepe","Garbadine","Flannel","Taffeta","Organza","Jacquard","Cupro","Lace","Viscose","Sequin","Mesh","Spandex","Dri-FIT","Tulle",
@@ -212,6 +239,14 @@ garment_types = {
         ]
     },
     "Skirts": {
+        "garmentName": [
+            "Micro skirt", "Leather skirt", "Denim skirt", "Balloon skirt", "Culotte short skirt", "Skort",
+            "Peplum skirt", "Sheath skirt", "Pencil skirt", "Circular skirt", "Flared skirt", "Full skirt",
+            "Yoke skirt", "Cargo skirt", "Ruffle skirt", "Button-down skirt", "Bell skirt", "Draped skirt",
+            "Wrap skirt", "Handkerchief skirt", "Sunray pleat skirt", "Knife pleat skirt", "Box pleat skirt",
+            "High-low skirt", "Tiered skirt", "Asymmetric skirt", "Midi skirt", "Trumpet skirt", "Slit skirt",
+            "Maxi skirt", "Gathered skirt", "Mini skirt", "Straight skirt"
+        ],
         "fabricName": [
             "Denim","Plain woven","Leather","Chiffon","Chambray","Tweed","Poplin","Jersey knit","Twill","Nylon","Polyester","Satin","Velvet","Corduroy",
             "Georgette","Crepe","Garbadine","Flannel","Taffeta","Organza","Jacquard","Cupro","Lace","Viscose","Sequin","Mesh","Spandex","Dri-FIT","Tulle",
