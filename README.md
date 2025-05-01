@@ -24,7 +24,7 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 │   │   ├── schemas/
 │   │   │   └── clothing_schemas.py
 │   │   ├── config/
-│   │   │   └── tag_list_en.py
+│   │   │   └── tag_list_en.py           $ Tool for mapping: https://jsoncrack.com/editor
 │   │   │   └── database.py       
 │   │   │   └── settings.py       
 │   │   │   └── api_keys.py     
