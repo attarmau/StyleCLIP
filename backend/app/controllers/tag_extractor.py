@@ -59,12 +59,7 @@ class TagExtractor:
             "garment_type": garment_type,
             "tags": tags
         }
-# TODO: Define core CLIP functionality here
-# This function will:
-# 1. Receive a cropped garment image
-# 2. Use CLIP to compute image embeddings
-# 3. Compare against predefined tag prompts (e.g., fabric, color, fit)
-# 4. Return the top-matching tags per category
-#
-# Note: CLIPModel instance and tag prompts should be initialized once to avoid redundant computation.
-# This placeholder is for future implementation as the tagging module is still under development.
+
+def get_tags_from_clip(image: Image.Image, top_k: int = 1) -> Dict[str, str]:
+    extractor = TagExtractor(tag_dict=garment_types)
+    return extractor.get_tags_from_image(image, top_k=top_k)
