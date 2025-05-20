@@ -1,4 +1,7 @@
 import logging
+from fastapi import UploadFile, File
+from backend.app.controllers.clothing_detector import detect_and_crop_garments
+from backend.app.controllers.tag_extractor import extract_tags_from_image  # Assume this exists
 from fastapi import APIRouter, HTTPException
 from backend.app.schemas.clothing_schemas import (
     UploadClothingItemRequest,
@@ -36,3 +39,18 @@ async def tag_clothing_image(payload: TagRequest):
     except Exception as e:
         logger.exception("Error during clothing image tagging")
         raise HTTPException(status_code=500, detail="Failed to extract tags from image.")
+
+@router.post("/multi-tag")
+async def multi_garment_tagging(file: UploadFile = File(...)):
+    try:
+        image_bytes = await file.read()
+        cropped_images = detect_and_crop_garments(image_bytes)
+
+        tags_list = []
+        for garment_img in cropped_images:
+            tags = extract_tags_from_image(garment_img)
+            tags_list.append(tags)
+        return {"garments": tags_list}
+    except Exception as e:
+        logger.error(f"Multi-tagging error: {e}")
+        raise HTTPException(status_code=500, detail="Failed to tag garments.")
