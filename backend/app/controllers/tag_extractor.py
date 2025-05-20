@@ -42,7 +42,6 @@ class TagExtractor:
             similarity = torch.cosine_similarity(image_embedding, tag_emb).item()
             tag_scores[tag] = similarity
 
-        # Select top tag per category
         category_top: Dict[str, Tuple[str, float]] = {}
         for tag, score in tag_scores.items():
             category = tag_to_category[tag]
@@ -51,6 +50,14 @@ class TagExtractor:
 
         return {cat: tag for cat, (tag, _) in category_top.items()}
 
+    def get_tags_from_image(self, image: Image.Image, top_k: int = 1) -> Dict[str, str]:
+        image_embedding = self.clip_model.get_image_embedding(image)
+        garment_type = self.determine_garment_type(image_embedding)
+        tags = self.extract_tags(image_embedding, garment_type, top_k=top_k)
+        return {
+            "garment_type": garment_type,
+            "tags": tags
+        }
 # TODO: Define core CLIP functionality here
 # This function will:
 # 1. Receive a cropped garment image
