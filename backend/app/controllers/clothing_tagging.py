@@ -4,7 +4,7 @@ from typing import List
 import base64
 from io import BytesIO
 from PIL import Image
-from models.clip_model import CLIPModel
+from backend.app.models.clip_model import CLIPModel
 from .rekognition_wrapper import detect_garments
 from .tag_extractor import get_tags_from_clip
 
