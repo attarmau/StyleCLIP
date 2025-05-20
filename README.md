@@ -19,7 +19,7 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 │   │   │   └── clothing_routes.py
 │   │   ├── /controllers
 │   │   │   └── clothing_controller.py
-│   │   │   └──clothing_tagging.py
+│   │   │   └── clothing_tagging.py
 │   │   │   └── tag_extractor.py         # Pending: define core CLIP functionality
 │   │   ├── schemas/
 │   │   │   └── clothing_schemas.py
@@ -31,10 +31,6 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 │   │   └── requirements.txt      
 │   └── .env                      
 │                      
-├── /fastmcp
-│   └── app
-│       └── server.py  
-│
 ├── /frontend 
 │   ├── Dockerfile        
 │   ├── package.json              
@@ -52,13 +48,10 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 │   │   ├── index.js
 │   │   ├── index.css            
 │   │   ├── tailwind.config.js        
-│   │   ├── postcss.config.js        
-│   │   └── .env                      
-│   ├── .gitignore                    
-│   ├── docker-compose.yml            
-│   └── README.md                    
-└────── requirements.txt
-
+│   │   └── postcss.config.js                    
+│   └── .env                                
+├── docker-compose.yml                     
+└── README.md 
 ```
 
 ## Quick Start Guide
