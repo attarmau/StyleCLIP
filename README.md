@@ -1,6 +1,11 @@
 # FastMCP_RecSys
 This is a CLIP-Based Fashion Recommender with MCP. 
 
+### 📌 Sample Components for UI
+1. Image upload
+2. Submit button
+3. Display clothing tags + recommendations
+
 # Mockup
 A user uploads a clothing image → YOLO detects clothing → CLIP encodes → Recommend similar
 
@@ -99,16 +104,19 @@ Once running, the server logs a confirmation and opens the app in your browser: 
 
 <img width="372" alt="Screenshot 2025-04-25 at 9 08 50 PM" src="https://github.com/user-attachments/assets/794a6dba-9fbb-40f1-9e57-c5c2e2af1013" />
 
-### 📌 Sample Components for UI
-1. Image upload
-2. Submit button
-3. Display clothing tags + recommendations
-
 # What’s completed so far:
 1. FastAPI server is up and running (24 Apr)
 2. Database connection is set up (24 Apr)
 3. Backend architecture is functional (24 Apr)
 4. Basic front-end UI for uploading picture (25 Apr)
+5. Mock Testing (20 May)
+```
+PYTHONPATH=. pytest backend/app/tests/test_rekognition_wrapper.py
+```
+<img width="1067" alt="Screenshot 2025-05-20 at 4 58 14 PM" src="https://github.com/user-attachments/assets/7a25a92d-2aca-42a8-abdd-194dd9d2e8a5" />
+- Tested Rekognition integration logic independently using a mock → verified it correctly extracts bounding boxes only when labels match the garment set
+- Confirmed the folder structure and PYTHONPATH=. works smoothly with pytest from root
+- FastAPI backend and test layout are now ready for adding more component tests or integration tests
 
 Next Step:
 1. Evaluate CLIP’s tagging accuracy on sample clothing images
