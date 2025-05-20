@@ -1,7 +1,7 @@
 import torch
 from typing import List, Dict, Tuple
 from backend.app.models.clip_model import CLIPModel
-from backend.app.config.tag_list_en import GARMENT_TYPES
+from backend.app.config.tag_list_en import garment_types
 
 class TagExtractor:
     def __init__(self, tag_dict: Dict[str, Dict[str, List[str]]], model_name="ViT-B/32"):
