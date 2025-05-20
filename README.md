@@ -14,6 +14,14 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 ├── /backend
 │   ├── Dockerfile            
 │   ├── /app
+│   ├── /aws
+│   │   │   └── rekognition_wrapper.py         # AWS Rekognition logic
+│   │   ├── /utils
+│   │   │   └── image_utils.py                 # Bounding box crop utils
+│   │   ├── /controllers
+│   │   │   └── clothing_detector.py           # Coordinates Rekognition + cropping
+│   │   ├── /tests
+│   │   │   └── test_rekognition_wrapper.py
 │   │   ├── server.py                    # FastAPI app code
 │   │   ├── /routes
 │   │   │   └── clothing_routes.py
