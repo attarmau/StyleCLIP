@@ -7,7 +7,7 @@ def test_detect_garments(mock_detect_labels):
     mock_detect_labels.return_value = {
         "Labels": [
             {
-                "Name": "Shirt",
+                "Name": "Long_Sleeved_Shirt",  # 👈 Match actual label check
                 "Instances": [
                     {"BoundingBox": {"Left": 0.1, "Top": 0.1, "Width": 0.2, "Height": 0.3}}
                 ]
@@ -18,4 +18,6 @@ def test_detect_garments(mock_detect_labels):
     image_bytes = b"fake_image_data"
     boxes = detect_garments(image_bytes)
     assert isinstance(boxes, list)
+    assert len(boxes) == 1
     assert boxes[0]["Left"] == 0.1
+    assert boxes[0]["Top"] == 0.1
