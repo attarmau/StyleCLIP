@@ -1,3 +1,5 @@
+# test the full pipeline from: Image bytes input→ AWS Rekognition garment detection → CLIP tag extraction for each garment crop
+
 import pytest
 from unittest.mock import patch, MagicMock
 from backend.app.controllers.clothing_tagging import tag_image_with_aws_and_clip
