@@ -114,8 +114,9 @@ Once running, the server logs a confirmation and opens the app in your browser: 
 PYTHONPATH=. pytest backend/app/tests/test_rekognition_wrapper.py
 ```
 <img width="1067" alt="Screenshot 2025-05-20 at 4 58 14 PM" src="https://github.com/user-attachments/assets/7a25a92d-2aca-42a8-abdd-194dd9d2e8a5" />
+
 - Tested Rekognition integration logic independently using a mock → verified it correctly extracts bounding boxes only when labels match the garment set
-  
+
 - Confirmed the folder structure and PYTHONPATH=. works smoothly with pytest from root
   
 - FastAPI backend and test layout are now ready for adding more component tests or integration tests
