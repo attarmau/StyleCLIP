@@ -131,7 +131,7 @@ PYTHONPATH=. pytest backend/app/tests/test_clothing_tagging.py
 
 - Tagging the cropped image using CLIP
 
-## 7. Mock Testing for full image tagging pipeline (Image bytes → AWS Rekognition (detect garments) → Crop images → CLIP (predict tags)
+## 7. Mock Testing for full image tagging pipeline (Image bytes → AWS Rekognition (detect garments) → Crop images → CLIP (predict tags) + Error Handling 
 ```
 PYTHONPATH=. pytest backend/app/tests/test_clothing_tagging.py
 ```
