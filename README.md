@@ -132,12 +132,12 @@ PYTHONPATH=. pytest backend/app/tests/test_clothing_tagging.py
 - Tagging the cropped image using CLIP
 
 ## 7. Mock Testing for full image tagging pipeline (Image bytes → AWS Rekognition (detect garments) → Crop images → CLIP (predict tags) + Error Handling
-| **Test Case**         | **Description**                                                                 |
-| --------------------- | ------------------------------------------------------------------------------- |
-| No Detection Result   | AWS doesn't detect any garments — should return an empty list.                  |
-| Image Not Clothing    | CLIP returns vague or empty tags — verify fallback behavior.                    |
-| AWS Returns Exception | Simulate `rekognition.detect_labels` throwing an error — check `try-except`.    |
-| Corrupted Image File  | Simulate a broken (non-JPEG) image — verify it raises an error or gives a hint. |
+| **Negative Test Case**         | **Description**                                                                 |
+| -------------------------------| ------------------------------------------------------------------------------- |
+| No Detection Result            | AWS doesn't detect any garments — should return an empty list.                  |
+| Image Not Clothing             | CLIP returns vague or empty tags — verify fallback behavior.                    |
+| AWS Returns Exception          | Simulate `rekognition.detect_labels` throwing an error — check `try-except`.    |
+| Corrupted Image File           | Simulate a broken (non-JPEG) image — verify it raises an error or gives a hint. |
 
 ```
 PYTHONPATH=. pytest backend/app/tests/test_clothing_tagging.py
