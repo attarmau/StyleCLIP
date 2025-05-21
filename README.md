@@ -118,7 +118,7 @@ PYTHONPATH=. pytest backend/app/tests/test_rekognition_wrapper.py
 - Tested Rekognition integration logic independently using a mock → verified it correctly extracts bounding boxes only when labels match the garment set
 - Confirmed the folder structure and PYTHONPATH=. works smoothly with pytest from root
 
-6. Mock Testing for AWS Rekognition -> CLIP (22 May)
+6. Mock Testing for AWS Rekognition -> CLIP (20 May)
 ```
 PYTHONPATH=. pytest backend/app/tests/test_clothing_tagging.py
 ```
@@ -129,7 +129,24 @@ PYTHONPATH=. pytest backend/app/tests/test_clothing_tagging.py
 - Cropping the image around detected bounding boxes
 
 - Tagging the cropped image using CLIP
-  
+
+7. Mock Testing for full image tagging pipeline (Image bytes → AWS Rekognition (detect garments) → Crop images → CLIP (predict tags)
+```
+PYTHONPATH=. pytest backend/app/tests/test_clothing_tagging.py
+```
+<img width="1072" alt="Screenshot 2025-05-21 at 11 19 47 AM" src="https://github.com/user-attachments/assets/b41f07f4-7926-44a3-8b64-34fe3c6ef049" />
+
+- detect_garments
+
+Simulates AWS Rekognition returning one bounding box: {"Left": 0.1, "Top": 0.1, "Width": 0.5, "Height": 0.5}.
+
+- crop_by_bounding_box
+
+Simulates the cropping step returning a dummy "cropped_image" object.
+
+- get_tags_from_clip
+
+Simulates CLIP returning a list of tags: ["T-shirt", "Cotton", "Casual"].
 
 Next Step:
 1. Evaluate CLIP’s tagging accuracy on sample clothing images
