@@ -1,6 +1,6 @@
 from PIL import Image
 
-def crop_from_normalized_bbox(image: Image.Image, bbox: dict) -> Image.Image:
+def crop_by_bounding_box(image: Image.Image, bbox: dict) -> Image.Image:
     width, height = image.size
     left = int(bbox["Left"] * width)
     top = int(bbox["Top"] * height)
