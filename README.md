@@ -123,8 +123,11 @@ PYTHONPATH=. pytest backend/app/tests/test_rekognition_wrapper.py
 PYTHONPATH=. pytest backend/app/tests/test_clothing_tagging.py
 ```
 <img width="1062" alt="Screenshot 2025-05-21 at 9 25 33 AM" src="https://github.com/user-attachments/assets/6c64b658-3414-4115-9e20-520132605cab" />
+
 - Detecting garments using AWS Rekognition 
+
 - Cropping the image around detected bounding boxes
+
 - Tagging the cropped image using CLIP
   
 
