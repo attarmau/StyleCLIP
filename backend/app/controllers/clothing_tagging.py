@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from typing import List
 import base64
 from io import BytesIO
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 from backend.app.models.clip_model import CLIPModel
 from backend.app.aws.rekognition_wrapper import detect_garments
 from backend.app.utils.image_utils import crop_by_bounding_box
@@ -38,18 +38,30 @@ def tag_image(request: TagRequest):
         raise HTTPException(status_code=400, detail=str(e))
 
 
-def tag_image_with_aws_and_clip(image_bytes: bytes):
-    garments = detect_garments(image_bytes)
-    image = Image.open(io.BytesIO(image_bytes))
-    
-    tags_result = []
-    for box in garments:
-        cropped = crop_by_bounding_box(image, box)
-        tags = get_tags_from_clip(cropped)
-        tags_result.append({"box": box, "tags": tags})
-    
-    return tags_result
-        
-        return TagResponse(tags=tags)
+def tag_image_with_aws_and_clip(image_bytes: bytes) -> List[dict]:
+    try:
+        image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
+    except UnidentifiedImageError:
+        raise ValueError("Invalid image format")
+
+    try:
+        garment_boxes = detect_garments(image_bytes)
     except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+        raise RuntimeError(f"AWS Rekognition failed: {str(e)}")
+
+    results = []
+    for box in garment_boxes:
+        try:
+            cropped = crop_by_bounding_box(image, box)
+            tags = get_tags_from_clip(cropped)
+            results.append({
+                "box": box,
+                "tags": tags,
+            })
+        except Exception as e:
+            results.append({
+                "box": box,
+                "tags": [],
+                "error": str(e),
+            })
+    return results
