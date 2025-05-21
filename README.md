@@ -27,7 +27,7 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 │   │   │   └── clothing_detector.py           # Coordinates Rekognition + cropping
 │   │   ├── /tests
 │   │   │   ├── test_rekognition_wrapper.py
-│   │   │   └──
+│   │   │   └── test_clothing_tagging.py
 │   │   ├── server.py                    # FastAPI app code
 │   │   ├── /routes
 │   │   │   └── clothing_routes.py
