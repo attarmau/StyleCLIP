@@ -136,17 +136,11 @@ PYTHONPATH=. pytest backend/app/tests/test_clothing_tagging.py
 ```
 <img width="1072" alt="Screenshot 2025-05-21 at 11 19 47 AM" src="https://github.com/user-attachments/assets/b41f07f4-7926-44a3-8b64-34fe3c6ef049" />
 
-- detect_garments
+- detect_garments: simulates AWS Rekognition returning one bounding box: {"Left": 0.1, "Top": 0.1, "Width": 0.5, "Height": 0.5}.
 
-Simulates AWS Rekognition returning one bounding box: {"Left": 0.1, "Top": 0.1, "Width": 0.5, "Height": 0.5}.
+- crop_by_bounding_box: simulates the cropping step returning a dummy "cropped_image" object.
 
-- crop_by_bounding_box
-
-Simulates the cropping step returning a dummy "cropped_image" object.
-
-- get_tags_from_clip
-
-Simulates CLIP returning a list of tags: ["T-shirt", "Cotton", "Casual"].
+- get_tags_from_clip: simulates CLIP returning a list of tags: ["T-shirt", "Cotton", "Casual"].
 
 Next Step:
 1. Evaluate CLIP’s tagging accuracy on sample clothing images
