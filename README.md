@@ -109,7 +109,7 @@ Once running, the server logs a confirmation and opens the app in your browser: 
 2. Database connection is set up (24 Apr)
 3. Backend architecture is functional (24 Apr)
 4. Basic front-end UI for uploading picture (25 Apr)
-5. Mock Testing for AWS Rekognition -> bounding box (15 May)
+# 5. Mock Testing for AWS Rekognition -> bounding box (15 May)
 ```
 PYTHONPATH=. pytest backend/app/tests/test_rekognition_wrapper.py
 ```
@@ -118,7 +118,7 @@ PYTHONPATH=. pytest backend/app/tests/test_rekognition_wrapper.py
 - Tested Rekognition integration logic independently using a mock → verified it correctly extracts bounding boxes only when labels match the garment set
 - Confirmed the folder structure and PYTHONPATH=. works smoothly with pytest from root
 
-6. Mock Testing for AWS Rekognition -> CLIP (20 May)
+# 6. Mock Testing for AWS Rekognition -> CLIP (20 May)
 ```
 PYTHONPATH=. pytest backend/app/tests/test_clothing_tagging.py
 ```
@@ -130,7 +130,7 @@ PYTHONPATH=. pytest backend/app/tests/test_clothing_tagging.py
 
 - Tagging the cropped image using CLIP
 
-7. Mock Testing for full image tagging pipeline (Image bytes → AWS Rekognition (detect garments) → Crop images → CLIP (predict tags)
+# 7. Mock Testing for full image tagging pipeline (Image bytes → AWS Rekognition (detect garments) → Crop images → CLIP (predict tags)
 ```
 PYTHONPATH=. pytest backend/app/tests/test_clothing_tagging.py
 ```
