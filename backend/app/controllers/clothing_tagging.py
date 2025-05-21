@@ -6,6 +6,7 @@ from io import BytesIO
 from PIL import Image
 from backend.app.models.clip_model import CLIPModel
 from backend.app.aws.rekognition_wrapper import detect_garments
+from backend.app.utils.image_utils import crop_by_bounding_box
 from .tag_extractor import get_tags_from_clip
 
 router = APIRouter()
