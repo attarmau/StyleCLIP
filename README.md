@@ -109,7 +109,7 @@ Once running, the server logs a confirmation and opens the app in your browser: 
 2. Database connection is set up (24 Apr)
 3. Backend architecture is functional (24 Apr)
 4. Basic front-end UI for uploading picture (25 Apr)
-5. Mock Testing for AWS Rekognition -> CLIP (20 May)
+5. Mock Testing for AWS Rekognition -> bounding box (15 May)
 ```
 PYTHONPATH=. pytest backend/app/tests/test_rekognition_wrapper.py
 ```
@@ -117,12 +117,16 @@ PYTHONPATH=. pytest backend/app/tests/test_rekognition_wrapper.py
 
 - Tested Rekognition integration logic independently using a mock → verified it correctly extracts bounding boxes only when labels match the garment set
 - Confirmed the folder structure and PYTHONPATH=. works smoothly with pytest from root
-- FastAPI backend and test layout are now ready for adding more component tests or integration tests
 
-6. Mock Testing for
-- Detecting garments using AWS Rekognition (or a similar service)
+6. Mock Testing for AWS Rekognition -> CLIP (22 May)
+```
+PYTHONPATH=. pytest backend/app/tests/test_clothing_tagging.py
+```
+<img width="1062" alt="Screenshot 2025-05-21 at 9 25 33 AM" src="https://github.com/user-attachments/assets/6c64b658-3414-4115-9e20-520132605cab" />
+- Detecting garments using AWS Rekognition 
 - Cropping the image around detected bounding boxes
 - Tagging the cropped image using CLIP
+  
 
 Next Step:
 1. Evaluate CLIP’s tagging accuracy on sample clothing images
