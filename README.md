@@ -26,20 +26,21 @@ A user uploads a clothing image → YOLO detects clothing → CLIP encodes → R
 │   │   ├── /controllers
 │   │   │   └── clothing_detector.py           # Coordinates Rekognition + cropping
 │   │   ├── /tests
-│   │   │   └── test_rekognition_wrapper.py
+│   │   │   ├── test_rekognition_wrapper.py
+│   │   │   └──
 │   │   ├── server.py                    # FastAPI app code
 │   │   ├── /routes
 │   │   │   └── clothing_routes.py
 │   │   ├── /controllers
-│   │   │   └── clothing_controller.py
-│   │   │   └── clothing_tagging.py
+│   │   │   ├── clothing_controller.py
+│   │   │   ├── clothing_tagging.py
 │   │   │   └── tag_extractor.py         # Pending: define core CLIP functionality
 │   │   ├── schemas/
 │   │   │   └── clothing_schemas.py
 │   │   ├── config/
-│   │   │   └── tag_list_en.py           $ Tool for mapping: https://jsoncrack.com/editor
-│   │   │   └── database.py       
-│   │   │   └── settings.py       
+│   │   │   ├── tag_list_en.py           $ Tool for mapping: https://jsoncrack.com/editor
+│   │   │   ├── database.py       
+│   │   │   ├── settings.py       
 │   │   │   └── api_keys.py     
 │   │   └── requirements.txt      
 │   └── .env                      
