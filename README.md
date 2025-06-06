@@ -156,6 +156,7 @@ pip install -r requirements.txt
 pip install git+https://github.com/openai/CLIP.git
 python -m backend.app.tests.test_tag_extractor
 ```
+<img width="1111" alt="Screenshot 2025-06-06 at 5 12 13 PM" src="https://github.com/user-attachments/assets/d0b3b288-20f8-482f-9d39-dcccf9a775ee" />
 
 Next Step:
 1. Evaluate CLIP’s tagging accuracy on sample clothing images
