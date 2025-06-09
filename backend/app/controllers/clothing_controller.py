@@ -10,17 +10,15 @@ from backend.app.schemas.clothing_schemas import (
 )
 from backend.app.models.clip_model import CLIPModel
 from backend.app.controllers.tag_extractor import TagExtractor
-from backend.app.config.tag_list_en import GARMENT_TYPES  # GARMENT_TYPES contains full tag hierarchy
+from backend.app.config.tag_list_en import GARMENT_TYPES  
 
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
-# Initialize model and tag extractor once
 clip_model = CLIPModel()
 tag_extractor = TagExtractor(tag_dict=GARMENT_TYPES)
 
 async def handle_upload_clothing_item(payload: UploadClothingItemRequest) -> UploadClothingItemResponse:
-    # Decode base64 image and save to disk
     image_data = base64.b64decode(payload.image_base64)
     filename = payload.filename or f"{uuid.uuid4().hex}.jpg"
     image_path = os.path.join(UPLOAD_DIR, filename)
