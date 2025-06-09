@@ -147,7 +147,6 @@ PYTHONPATH=. pytest backend/app/tests/test_clothing_tagging.py
 - detect_garments: simulates AWS Rekognition returning one bounding box: {"Left": 0.1, "Top": 0.1, "Width": 0.5, "Height": 0.5}
 - crop_by_bounding_box: simulates the cropping step returning a dummy "cropped_image" object
 - get_tags_from_clip: simulates CLIP returning a list of tags: ["T-shirt", "Cotton", "Casual"]
-- 
 
 ## 8. Run Testing for CLIP Output (30 May)
 ```
