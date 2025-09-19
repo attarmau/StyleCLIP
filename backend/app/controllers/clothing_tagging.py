@@ -2,6 +2,7 @@ from fastapi import APIRouter, HTTPException, UploadFile, File
 from pydantic import BaseModel
 from typing import List
 import base64
+import io
 from io import BytesIO
 from PIL import Image, UnidentifiedImageError
 from backend.app.models.clip_model import CLIPModel
@@ -53,7 +54,7 @@ def tag_image_with_aws_and_clip(image_bytes: bytes) -> List[dict]:
     for box in garment_boxes:
         try:
             cropped = crop_by_bounding_box(image, box)
-            tags = get_tags_from_clip(cropped)
+            tags = get_tags_from_clip(cropped, top_k=3)  # <-- return multiple tags per category
             results.append({
                 "box": box,
                 "tags": tags,
@@ -61,7 +62,7 @@ def tag_image_with_aws_and_clip(image_bytes: bytes) -> List[dict]:
         except Exception as e:
             results.append({
                 "box": box,
-                "tags": [],
+                "tags": {},
                 "error": str(e),
             })
     return results
