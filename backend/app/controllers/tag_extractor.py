@@ -1,18 +1,9 @@
 import torch
-from typing import List, Dict, Tuple
+from typing import List, Dict
 from backend.app.models.clip_model import CLIPModel
 from backend.app.config.tag_list_en import garment_types
 from PIL import Image
 
-# ------------- Helper to flatten tags -------------
-def get_all_tags_from_garment_types() -> List[str]:
-    tags = []
-    for g_type, categories in garment_types.items():
-        for category_tags in categories.values():
-            tags.extend(category_tags)
-    return tags
-
-# ------------- TagExtractor Class -------------
 class TagExtractor:
     def __init__(self, tag_dict: Dict[str, Dict[str, List[str]]], model_name="ViT-B/32"):
         self.clip_model = CLIPModel(model_name)
@@ -36,30 +27,38 @@ class TagExtractor:
                 best_type = g_type
         return best_type
 
-    def extract_tags(self, image_embedding: torch.Tensor, garment_type: str, top_k: int = 1) -> Dict[str, str]:
-        tag_scores: Dict[str, float] = {}
+    def extract_tags(self, image_embedding: torch.Tensor, garment_type: str, top_k: int = 3) -> Dict[str, List[str]]:
+        """Return top_k tags per category for the garment type"""
         tag_categories = self.tag_dict.get(garment_type, {})
-        flattened_tags = []
         tag_to_category = {}
+        flattened_tags = []
         for category, tags in tag_categories.items():
             for tag in tags:
                 flattened_tags.append(tag)
                 tag_to_category[tag] = category
 
+        # Compute similarity scores for all tags
+        tag_scores = {}
         for tag in flattened_tags:
             tag_emb = self.clip_model.get_text_embedding(tag)
-            similarity = torch.cosine_similarity(image_embedding, tag_emb).item()
-            tag_scores[tag] = similarity
+            tag_scores[tag] = torch.cosine_similarity(image_embedding, tag_emb).item()
 
-        category_top: Dict[str, Tuple[str, float]] = {}
+        # Group tags by category and pick top_k per category
+        category_tags: Dict[str, List[str]] = {}
         for tag, score in tag_scores.items():
             category = tag_to_category[tag]
-            if category not in category_top or score > category_top[category][1]:
-                category_top[category] = (tag, score)
+            if category not in category_tags:
+                category_tags[category] = []
+            category_tags[category].append((tag, score))
 
-        return {cat: tag for cat, (tag, _) in category_top.items()}
+        # Sort each category by score and pick top_k
+        for category in category_tags:
+            sorted_tags = sorted(category_tags[category], key=lambda x: x[1], reverse=True)
+            category_tags[category] = [tag for tag, _ in sorted_tags[:top_k]]
 
-    def get_tags_from_image(self, image: Image.Image, top_k: int = 1) -> Dict[str, str]:
+        return category_tags
+
+    def get_tags_from_image(self, image: Image.Image, top_k: int = 3) -> Dict[str, List[str]]:
         image_embedding = self.clip_model.get_image_embedding_from_pil(image)
         garment_type = self.determine_garment_type(image_embedding)
         tags = self.extract_tags(image_embedding, garment_type, top_k=top_k)
@@ -69,20 +68,6 @@ class TagExtractor:
         }
 
 # ------------- Standalone Function -------------
-def get_tags_from_clip(image: Image.Image, model_name="ViT-B/32", top_k: int = 5) -> List[str]:
-    clip_model = CLIPModel(model_name)
-    embedding = clip_model.get_image_embedding_from_pil(image)
-    label_texts = get_all_tags_from_garment_types()
-    text_embeddings = [
-        clip_model.get_text_embedding(label) for label in label_texts
-    ]
-
-    similarities = [
-        (label, torch.cosine_similarity(embedding, text_emb).item())
-        for label, text_emb in zip(label_texts, text_embeddings)
-    ]
-
-    sorted_tags = sorted(similarities, key=lambda x: x[1], reverse=True)
-    top_tags = [label for label, _ in sorted_tags[:top_k]]
-
-    return top_tags
+def get_tags_from_clip(image: Image.Image, model_name="ViT-B/32", top_k: int = 3) -> Dict[str, List[str]]:
+    extractor = TagExtractor(garment_types, model_name)
+    return extractor.get_tags_from_image(image, top_k=top_k)
