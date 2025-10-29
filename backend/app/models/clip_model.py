@@ -11,10 +11,16 @@ class CLIPModel:
         self.model, self.preprocess = clip.load(model_name, device=device)
 
     def preprocess_pil_image(self, pil_image: Image.Image) -> torch.Tensor:
+        """
+        Preprocess a PIL image for CLIP model input.
+        """
         image = pil_image.convert("RGB")
         return self.preprocess(image).unsqueeze(0).to(device)
 
     def get_image_embedding_from_pil(self, pil_image: Image.Image) -> torch.Tensor:
+        """
+        Get normalized CLIP embedding from a PIL image.
+        """
         with torch.no_grad():
             image_input = self.preprocess_pil_image(pil_image)
             image_features = self.model.encode_image(image_input)
@@ -30,6 +36,10 @@ class CLIPModel:
             return text_features / text_features.norm(dim=-1, keepdim=True)
 
     def batch_image_embeddings(self, image_paths: List[str]) -> Dict[str, torch.Tensor]:
+        """
+        Compute embeddings for a list of image paths.
+        Returns a dict mapping image path to embedding tensor.
+        """
         images = []
         image_map = {}
 
@@ -53,6 +63,9 @@ class CLIPModel:
         return {path: features[i] for i, path in enumerate(image_map)}
 
     def embed_folder(self, folder_path: str) -> Dict[str, torch.Tensor]:
+        """
+        Compute embeddings for all images in a folder.
+        """
         image_paths = [
             os.path.join(folder_path, fname)
             for fname in os.listdir(folder_path)
