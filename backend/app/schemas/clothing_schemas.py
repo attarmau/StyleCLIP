@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field, GetJsonSchemaHandler
 from pydantic.json_schema import JsonSchemaValue
-from typing import List, Optional
+from typing import List, Dict, Optional
 from datetime import datetime
 from bson import ObjectId
 
@@ -30,15 +30,22 @@ class PyObjectId(ObjectId):
 # --------------------------
 # MongoDB Document Schema
 # --------------------------
-class ClothingItemInDB(BaseModel):  # formerly ClothingItemModel
+class GarmentTags(BaseModel):
+    garment_type: str
+    aws_label: Optional[str] = None
+    box: Optional[Dict[str, float]] = None  # BoundingBox coordinates
+    tags: Dict[str, List[str]]  # e.g., {"color": ["red","blue"], "fit":["slim","relaxed"]}
+
+
+class ClothingItemInDB(BaseModel):
     id: Optional[PyObjectId] = Field(alias="_id")
     filename: str
     image_path: str
-    tags: List[str]
+    garments: List[GarmentTags]
     uploaded_at: Optional[datetime] = Field(default_factory=datetime.utcnow)
 
     class Config:
-        populate_by_name = True  # replaces `allow_population_by_field_name` in v2
+        populate_by_name = True
         arbitrary_types_allowed = True
         json_encoders = {ObjectId: str}
 
@@ -58,11 +65,18 @@ class TagRequest(BaseModel):
 # --------------------------
 # API Response Schemas
 # --------------------------
+class GarmentResponse(BaseModel):
+    garment_type: str
+    aws_label: Optional[str] = None
+    box: Optional[Dict[str, float]] = None
+    tags: Dict[str, List[str]]  # per-category top N tags
+
+
 class UploadClothingItemResponse(BaseModel):
     id: str
     filename: str
-    tags: List[str]
+    garments: List[GarmentResponse]
 
 
 class TagResponse(BaseModel):
-    tags: List[str]
+    garments: List[GarmentResponse]
