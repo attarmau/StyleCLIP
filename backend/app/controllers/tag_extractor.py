@@ -27,7 +27,7 @@ class TagExtractor:
                 best_type = g_type
         return best_type
 
-    def extract_tags(self, image_embedding: torch.Tensor, garment_type: str, top_k: int = 3) -> Dict[str, List[str]]:
+    def extract_tags(self, image_embedding: torch.Tensor, garment_type: str, top_k: int = 10) -> Dict[str, List[str]]:
         """Return top_k tags per category for the garment type"""
         tag_categories = self.tag_dict.get(garment_type, {})
         tag_to_category = {}
@@ -51,14 +51,14 @@ class TagExtractor:
                 category_tags[category] = []
             category_tags[category].append((tag, score))
 
-        # Sort each category by score and pick top_k
+        # Sort each category by score and pick top_k, k=10 for now
         for category in category_tags:
             sorted_tags = sorted(category_tags[category], key=lambda x: x[1], reverse=True)
             category_tags[category] = [tag for tag, _ in sorted_tags[:top_k]]
 
         return category_tags
 
-    def get_tags_from_image(self, image: Image.Image, top_k: int = 3) -> Dict[str, List[str]]:
+    def get_tags_from_image(self, image: Image.Image, top_k: int = 10) -> Dict[str, List[str]]:
         image_embedding = self.clip_model.get_image_embedding_from_pil(image)
         garment_type = self.determine_garment_type(image_embedding)
         tags = self.extract_tags(image_embedding, garment_type, top_k=top_k)
@@ -66,8 +66,7 @@ class TagExtractor:
             "garment_type": garment_type,
             "tags": tags
         }
-
-# ------------- Standalone Function -------------
-def get_tags_from_clip(image: Image.Image, model_name="ViT-B/32", top_k: int = 3) -> Dict[str, List[str]]:
+        
+def get_tags_from_clip(image: Image.Image, model_name="ViT-B/32", top_k: int = 10) -> Dict[str, List[str]]:
     extractor = TagExtractor(garment_types, model_name)
     return extractor.get_tags_from_image(image, top_k=top_k)
