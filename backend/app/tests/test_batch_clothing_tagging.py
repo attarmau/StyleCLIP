@@ -45,7 +45,7 @@ def tag_image_per_garment(image_path: str, min_confidence=MIN_CONFIDENCE):
                 "aws_label": label.get("Name", "Unknown"),
                 "box": box,
                 "garment_type": g_type,
-                "tags": {k: v[:3] for k, v in tags_result.get("tags", {}).items()}  # Top 3 per category
+                "tags": {k: v[:10] for k, v in tags_result.get("tags", {}).items()}  # Top 10 per category
             })
 
     # Fallback if no garments detected
