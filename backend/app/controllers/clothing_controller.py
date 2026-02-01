@@ -5,6 +5,7 @@ from fastapi import HTTPException
 from PIL import Image
 
 from backend.app.pipeline.inference_pipeline import InferencePipeline
+from backend.app.controllers.tag_extractor import get_tags_from_clip
 from backend.app.schemas.clothing_schemas import (
     UploadClothingItemRequest,
     UploadClothingItemResponse,
