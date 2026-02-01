@@ -1,5 +1,5 @@
-# FastMCP_RecSys
-This is a CLIP-Based Fashion Recommender with MCP. 
+# AWS_RecSys
+This is a CLIP-Based Fashion Recommender with AWS. 
 
 ### 📌 Sample Components for UI
 1. Image upload
