@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: styleclip-backend
+  labels:
+    app: styleclip-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: styleclip-backend
+  template:
+    metadata:
+      labels:
+        app: styleclip-backend
+    spec:
+      containers:
+      - name: backend
+        image: styleclip-backend:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: MONGODB_URL
+          value: "mongodb://mongodb:27017"
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10

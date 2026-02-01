@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend   # Path to the backend directory
+      dockerfile: Dockerfile  # The backend Dockerfile
+    ports:
+      - "8000:8000"         # Expose the backend on port 8000
+    networks:
+      - app-network
+    depends_on:
+      - mongodb             # Make sure MongoDB is up before backend starts
+
+  frontend:
+    build:
+      context: ./frontend  # Path to the frontend directory
+      dockerfile: Dockerfile  # The frontend Dockerfile
+    ports:
+      - "3000:3000"         # Expose the frontend on port 3000
+    networks:
+      - app-network
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"       # MongoDB default port
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local

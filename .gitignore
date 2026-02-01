@@ -1,0 +1,11 @@
+.env
+/node_modules
+*.pyc
+__pycache__
+*.log
+*.pid
+
+# Uploads and generated data
+uploads/
+optimized_dataset.json
+mongo-data/

@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+pydantic
+python-multipart
+pillow
+torch
+transformers
+sentence-transformers
+motor
+python-dotenv
+boto3
+pytest
